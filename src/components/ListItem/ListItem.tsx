@@ -11,6 +11,7 @@ type Props = {
 
 const ListItem: FC<Props> = ({item}) => {
   const {date, differenceInCalendarDays, name} = item;
+  const absoluteDifference = Math.abs(differenceInCalendarDays);
   return (
     <View style={styles.container}>
       <View style={styles.left}>
@@ -18,8 +19,8 @@ const ListItem: FC<Props> = ({item}) => {
         <Text>{date}</Text>
       </View>
       <View style={styles.right}>
-        <Text style={styles.days}>{Math.abs(differenceInCalendarDays)}</Text>
-        <Text>{differenceInCalendarDays === 1 ? 'day' : 'days'}</Text>
+        <Text style={styles.days}>{absoluteDifference}</Text>
+        <Text>{absoluteDifference === 1 ? 'day' : 'days'}</Text>
       </View>
     </View>
   );

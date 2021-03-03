@@ -1,11 +1,13 @@
 import React, {FC, useCallback, useLayoutEffect} from 'react';
-import {View, Button, FlatList} from 'react-native';
+import {View, Button, ListRenderItemInfo} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {differenceInCalendarDays, format} from 'date-fns';
+import {SwipeListView} from 'react-native-swipe-list-view';
 
 import {ListItemType, RootStackParamList} from '../../types';
 import ListItem from '../../components/ListItem';
 import {useData} from '../../DataContext';
+import ListActions from '../../components/ListActions';
 
 type ViewProps = {
   navigation: StackNavigationProp<RootStackParamList>;
@@ -14,6 +16,7 @@ type ViewProps = {
 const UntilList: FC<ViewProps> = ({navigation}) => {
   const {
     state: {counters},
+    deleteCounter,
   } = useData();
 
   const untilCounters: ListItemType[] | undefined = counters
@@ -30,6 +33,10 @@ const UntilList: FC<ViewProps> = ({navigation}) => {
     .filter((counter) => counter.differenceInCalendarDays < 0)
     .sort((a, b) => b.differenceInCalendarDays - a.differenceInCalendarDays);
 
+  const handleDelete = (key: string) => {
+    deleteCounter(key);
+  };
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
@@ -42,14 +49,32 @@ const UntilList: FC<ViewProps> = ({navigation}) => {
     });
   }, [navigation]);
 
-  const renderListItem = useCallback(
+  const listItem = useCallback(
     ({item}: {item: ListItemType}) => <ListItem item={item} />,
+    [],
+  );
+
+  const listActions = useCallback(
+    (data: ListRenderItemInfo<ListItemType>) => (
+      <ListActions data={data} onDelete={handleDelete} />
+    ),
     [],
   );
 
   return (
     <View>
-      <FlatList data={untilCounters} renderItem={renderListItem} />
+      <SwipeListView
+        data={untilCounters}
+        renderItem={listItem}
+        renderHiddenItem={listActions}
+        closeOnScroll
+        closeOnRowOpen
+        closeOnRowPress
+        disableRightSwipe
+        leftOpenValue={0}
+        rightOpenValue={-75}
+        swipeToOpenPercent={20}
+      />
     </View>
   );
 };
