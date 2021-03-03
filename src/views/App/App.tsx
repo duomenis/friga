@@ -14,8 +14,7 @@ import {
   UntilListStackParamList,
 } from '../../types';
 
-import UntilList from '../UntilList';
-import SinceList from '../SinceList';
+import List from '../List';
 import CreateCounter from '../CreateCounter';
 import DataProvider from '../../DataContext';
 
@@ -29,7 +28,7 @@ const App = () => {
     <UntilListStack.Navigator>
       <UntilListStack.Screen
         name="UntilList"
-        component={UntilList}
+        component={List}
         options={{title: 'County'}}
       />
     </UntilListStack.Navigator>
@@ -39,7 +38,8 @@ const App = () => {
     <SinceListStack.Navigator>
       <SinceListStack.Screen
         name="SinceList"
-        component={SinceList}
+        component={List}
+        initialParams={{since: true}}
         options={{title: 'County'}}
       />
     </SinceListStack.Navigator>

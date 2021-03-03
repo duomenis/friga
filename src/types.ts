@@ -7,7 +7,7 @@ export type UntilListStackParamList = {
 };
 
 export type SinceListStackParamList = {
-  SinceList: undefined;
+  SinceList: {since: boolean};
 };
 
 export type RootTabParamList = {
