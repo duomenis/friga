@@ -90,7 +90,11 @@ const App = () => {
               title: 'County',
             }}
           />
-          <RootStack.Screen name="CreateCounter" component={CreateCounter} />
+          <RootStack.Screen
+            name="CreateCounter"
+            component={CreateCounter}
+            options={{title: 'New Counter'}}
+          />
         </RootStack.Navigator>
       </NavigationContainer>
     </DataProvider>

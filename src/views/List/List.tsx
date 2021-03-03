@@ -13,6 +13,7 @@ import {
 import ListItem from '../../components/ListItem';
 import {useData} from '../../DataContext';
 import ListActions from '../../components/ListActions';
+import Empty from '../../components/Empty';
 
 type ListRouteProp = RouteProp<SinceListStackParamList, 'SinceList'>;
 
@@ -27,23 +28,25 @@ const List: FC<ViewProps> = ({navigation, route}) => {
     deleteCounter,
   } = useData();
 
-  let untilCounters: ListItemType[] | undefined = counters?.map((counter) => {
+  const isSince = route.params?.since;
+
+  let listCounters: ListItemType[] | undefined = counters?.map((counter) => {
     const today = new Date().setHours(0, 0, 0, 0);
     const counterDate = new Date(counter.date).setHours(0, 0, 0, 0);
     const diff = differenceInCalendarDays(today, counterDate);
     return {
       ...counter,
-      date: format(new Date(counter.date), 'E, LLLL do yyyy'),
+      date: format(new Date(counter.date), 'E, LLLL d, yyyy'),
       differenceInCalendarDays: diff,
     };
   });
 
-  if (route.params?.since) {
-    untilCounters = untilCounters
+  if (isSince) {
+    listCounters = listCounters
       ?.filter((counter) => counter.differenceInCalendarDays >= 0)
       .sort((a, b) => a.differenceInCalendarDays - b.differenceInCalendarDays);
   } else {
-    untilCounters = untilCounters
+    listCounters = listCounters
       ?.filter((counter) => counter.differenceInCalendarDays < 0)
       .sort((a, b) => b.differenceInCalendarDays - a.differenceInCalendarDays);
   }
@@ -75,10 +78,19 @@ const List: FC<ViewProps> = ({navigation, route}) => {
     [deleteCounter],
   );
 
+  if (!listCounters || listCounters.length === 0) {
+    return (
+      <Empty
+        action={() => navigation.navigate('CreateCounter')}
+        type={isSince ? 'Since' : 'Until'}
+      />
+    );
+  }
+
   return (
     <View>
       <SwipeListView
-        data={untilCounters}
+        data={listCounters}
         renderItem={listItem}
         renderHiddenItem={listActions}
         closeOnScroll
