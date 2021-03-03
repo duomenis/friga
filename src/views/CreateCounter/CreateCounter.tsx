@@ -21,12 +21,12 @@ const CreateCounter: FC<ViewProps> = ({navigation}) => {
   const [name, setName] = useState<string>('');
   const [date, setDate] = useState<string>(format(new Date(), 'yyyy/MM/dd'));
 
-  const handleAddButtonClick = () => {
-    addCounter({key: nanoid(), name, date});
-    navigation.goBack();
-  };
-
   useLayoutEffect(() => {
+    const handleAddButtonClick = () => {
+      addCounter({key: nanoid(), name, date});
+      navigation.goBack();
+    };
+
     navigation.setOptions({
       headerRight: () => (
         <Button
@@ -39,7 +39,7 @@ const CreateCounter: FC<ViewProps> = ({navigation}) => {
         <Button onPress={() => navigation.goBack()} title="Cancel" />
       ),
     });
-  }, [navigation, name, date, handleAddButtonClick]);
+  }, [navigation, name, date, addCounter]);
 
   return (
     <View style={styles.container}>

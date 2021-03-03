@@ -8,7 +8,7 @@ import styles from './ListActions.styles';
 
 type Props = {
   data: ListRenderItemInfo<ListItemType>;
-  onDelete: (id: string) => void;
+  onDelete: (key: string) => void;
 };
 
 const ListAction: FC<Props> = ({data, onDelete}) => (

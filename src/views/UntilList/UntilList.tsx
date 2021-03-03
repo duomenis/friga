@@ -33,10 +33,6 @@ const UntilList: FC<ViewProps> = ({navigation}) => {
     .filter((counter) => counter.differenceInCalendarDays < 0)
     .sort((a, b) => b.differenceInCalendarDays - a.differenceInCalendarDays);
 
-  const handleDelete = (key: string) => {
-    deleteCounter(key);
-  };
-
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
@@ -55,10 +51,13 @@ const UntilList: FC<ViewProps> = ({navigation}) => {
   );
 
   const listActions = useCallback(
-    (data: ListRenderItemInfo<ListItemType>) => (
-      <ListActions data={data} onDelete={handleDelete} />
-    ),
-    [],
+    (data: ListRenderItemInfo<ListItemType>) => {
+      const handleDelete = (key: string) => {
+        deleteCounter(key);
+      };
+      return <ListActions data={data} onDelete={handleDelete} />;
+    },
+    [deleteCounter],
   );
 
   return (

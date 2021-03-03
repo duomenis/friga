@@ -70,17 +70,14 @@ const DataProvider: FC<Props> = ({children}) => {
           });
       },
       deleteCounter: (key: string) => {
-        const {counters} = state;
-        let updatedCounters = [...(counters || [])];
-        const indexToDelete = updatedCounters.findIndex(
+        const counters = [...(state.counters || [])];
+        const indexToDelete = counters.findIndex(
           (counter) => counter.key === key,
         );
         if (indexToDelete > -1) {
-          updatedCounters.splice(indexToDelete, 1);
+          counters.splice(indexToDelete, 1);
           AsyncStorage.setItem('@county_counters', JSON.stringify(counters))
-            .then(() =>
-              dispatch({type: 'UPDATE_COUNTERS', counters: updatedCounters}),
-            )
+            .then(() => dispatch({type: 'UPDATE_COUNTERS', counters: counters}))
             .catch(() => {
               console.error('AsyncStorage: ');
             });
@@ -89,6 +86,7 @@ const DataProvider: FC<Props> = ({children}) => {
     }),
     [state],
   );
+
   useEffect(() => {
     const restoreCounters = async () => {
       //await AsyncStorage.clear();
