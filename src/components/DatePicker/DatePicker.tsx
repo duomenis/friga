@@ -9,25 +9,19 @@ import styles from './DatePicker.styles';
 type Props = {
   onChangeText: (event: Event, value?: Date) => void;
   placeholder: string;
-  borderless?: boolean;
   value: string;
   onPress?: () => void;
   name: string;
 };
 
-const DatePicker: FC<Props> = ({
-  onChangeText,
-  placeholder,
-  borderless,
-  value,
-  onPress,
-}) => {
+const DatePicker: FC<Props> = ({onChangeText, placeholder, value, onPress}) => {
   return (
-    <View style={borderless ? {} : styles.border}>
+    <View style={styles.container}>
       <TouchableOpacity onPress={onPress}>
         <View style={styles.control}>
-          <Text>{placeholder}</Text>
+          <Text style={styles.text}>{placeholder}</Text>
           <TextInput
+            style={[styles.text, styles.value]}
             editable={false}
             value={format(new Date(value), 'MMM d, yyyy')}
           />

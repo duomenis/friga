@@ -4,8 +4,9 @@ import colors from '../../constants/colors';
 
 export default StyleSheet.create({
   input: {
-    paddingTop: 12,
-    paddingBottom: 12,
+    marginLeft: 16,
+    paddingVertical: 12,
+    fontSize: 16,
   },
   border: {
     borderBottomWidth: 0.5,

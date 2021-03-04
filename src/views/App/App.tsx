@@ -57,7 +57,12 @@ const App = () => {
   );
 
   const RootTabScreens = () => (
-    <RootTab.Navigator>
+    <RootTab.Navigator
+      tabBarOptions={{
+        labelStyle: {
+          fontSize: 12,
+        },
+      }}>
       <RootTab.Screen
         name="UntilListStack"
         component={UntilListStackScreens}

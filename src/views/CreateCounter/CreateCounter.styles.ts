@@ -9,7 +9,6 @@ export default StyleSheet.create({
     borderTopWidth: 0.5,
     borderBottomColor: colors.inputBottomBorder,
     borderTopColor: colors.inputBottomBorder,
-    paddingLeft: 16,
     marginTop: 16,
     marginBottom: 16,
   },
