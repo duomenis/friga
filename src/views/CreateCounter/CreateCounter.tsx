@@ -52,7 +52,7 @@ const CreateCounter: FC<ViewProps> = ({navigation}) => {
         <Button onPress={() => navigation.goBack()} title="Cancel" />
       ),
     });
-  }, [navigation, name, date, addCounter]);
+  }, [navigation, name, date, addCounter, today]);
 
   return (
     <View style={styles.container}>
