@@ -53,7 +53,6 @@ const CreateCounter: FC<ViewProps> = ({navigation}) => {
         onChangeText={(_, selectedDate) =>
           selectedDate && setDate(format(selectedDate, 'yyyy/MM/dd'))
         }
-        open
       />
     </View>
   );

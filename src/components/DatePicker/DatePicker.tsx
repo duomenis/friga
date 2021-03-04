@@ -12,7 +12,6 @@ type Props = {
   borderless?: boolean;
   value: string;
   onPress?: () => void;
-  open?: boolean;
   name: string;
 };
 
@@ -22,7 +21,6 @@ const DatePicker: FC<Props> = ({
   borderless,
   value,
   onPress,
-  open,
 }) => {
   return (
     <View style={borderless ? {} : styles.border}>
@@ -35,16 +33,12 @@ const DatePicker: FC<Props> = ({
           />
         </View>
       </TouchableOpacity>
-      {open && (
-        <DateTimePicker
-          testID="dateTimePicker"
-          value={new Date(value)}
-          mode="date"
-          is24Hour={true}
-          display="spinner"
-          onChange={onChangeText}
-        />
-      )}
+      <DateTimePicker
+        value={new Date(value)}
+        mode="date"
+        display="inline"
+        onChange={onChangeText}
+      />
     </View>
   );
 };

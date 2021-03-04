@@ -1,5 +1,11 @@
 import React from 'react';
-import {NavigationContainer, RouteProp} from '@react-navigation/native';
+import {
+  NavigationContainer,
+  RouteProp,
+  DefaultTheme,
+  DarkTheme,
+} from '@react-navigation/native';
+import {useColorScheme} from 'react-native';
 import {
   createStackNavigator,
   StackNavigationProp,
@@ -19,6 +25,7 @@ import CreateCounter from '../CreateCounter';
 import DataProvider from '../../DataContext';
 
 const App = () => {
+  const scheme = useColorScheme();
   const RootStack = createStackNavigator<RootStackParamList>();
   const SinceListStack = createStackNavigator<SinceListStackParamList>();
   const UntilListStack = createStackNavigator<UntilListStackParamList>();
@@ -29,7 +36,9 @@ const App = () => {
       <UntilListStack.Screen
         name="UntilList"
         component={List}
-        options={{title: 'County'}}
+        options={{
+          title: 'County',
+        }}
       />
     </UntilListStack.Navigator>
   );
@@ -40,7 +49,9 @@ const App = () => {
         name="SinceList"
         component={List}
         initialParams={{since: true}}
-        options={{title: 'County'}}
+        options={{
+          title: 'County',
+        }}
       />
     </SinceListStack.Navigator>
   );
@@ -62,7 +73,7 @@ const App = () => {
 
   return (
     <DataProvider>
-      <NavigationContainer>
+      <NavigationContainer theme={scheme === 'dark' ? DarkTheme : DefaultTheme}>
         <RootStack.Navigator
           mode="modal"
           screenOptions={({
