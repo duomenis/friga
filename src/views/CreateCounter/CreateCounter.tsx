@@ -3,7 +3,7 @@ import {View, Button} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import 'react-native-get-random-values';
 import {nanoid} from 'nanoid';
-import {format} from 'date-fns';
+import {differenceInCalendarDays, format} from 'date-fns';
 
 import {useData} from '../../DataContext';
 import {RootStackParamList} from '../../types';
@@ -18,13 +18,26 @@ type ViewProps = {
 
 const CreateCounter: FC<ViewProps> = ({navigation}) => {
   const {addCounter} = useData();
+  const today = new Date().setHours(0, 0, 0, 0);
   const [name, setName] = useState<string>('');
   const [date, setDate] = useState<string>(format(new Date(), 'yyyy/MM/dd'));
 
   useLayoutEffect(() => {
     const handleAddButtonClick = () => {
       addCounter({key: nanoid(), name, date});
-      navigation.goBack();
+      const counterDate = new Date(date).setHours(0, 0, 0, 0);
+      const diff = differenceInCalendarDays(today, counterDate);
+      if (diff >= 0) {
+        navigation.navigate('RootTab', {
+          screen: 'SinceListStack',
+          params: {screen: 'SinceList', params: {since: true}},
+        });
+      } else {
+        navigation.navigate('RootTab', {
+          screen: 'UntilListStack',
+          params: {screen: 'UntilList'},
+        });
+      }
     };
 
     navigation.setOptions({
@@ -46,7 +59,6 @@ const CreateCounter: FC<ViewProps> = ({navigation}) => {
       <Input placeholder="Name" value={name} onChangeText={setName} />
       <DatePicker
         name="datePicker"
-        borderless
         value={date}
         placeholder="Date"
         onPress={() => null}
