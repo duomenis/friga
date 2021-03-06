@@ -2,10 +2,10 @@ import React from 'react';
 import {
   NavigationContainer,
   RouteProp,
-  DefaultTheme,
-  DarkTheme,
+  //DefaultTheme,
+  //DarkTheme,
 } from '@react-navigation/native';
-import {useColorScheme} from 'react-native';
+//import {useColorScheme} from 'react-native';
 import {
   createStackNavigator,
   StackNavigationProp,
@@ -26,7 +26,7 @@ import DataProvider from '../../DataContext';
 import {LightTheme} from '../../Themes';
 
 const App = () => {
-  const scheme = useColorScheme();
+  //const scheme = useColorScheme();
   const RootStack = createStackNavigator<RootStackParamList>();
   const SinceListStack = createStackNavigator<SinceListStackParamList>();
   const UntilListStack = createStackNavigator<UntilListStackParamList>();
