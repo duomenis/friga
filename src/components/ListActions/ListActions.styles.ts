@@ -5,7 +5,7 @@ import colors from '../../constants/colors';
 export default StyleSheet.create({
   rowBack: {
     alignItems: 'center',
-    backgroundColor: '#DDD',
+    backgroundColor: colors.listActionsBackground,
     flex: 1,
     flexDirection: 'row',
     paddingLeft: 15,
@@ -17,13 +17,6 @@ export default StyleSheet.create({
     position: 'absolute',
     top: 0,
     width: 75,
-  },
-  disabled: {
-    backgroundColor: colors.disabledActionBackground,
-  },
-  backRightBtnLeft: {
-    backgroundColor: colors.payActionBackground,
-    right: 75,
   },
   backRightBtnRight: {
     backgroundColor: colors.deleteActionBackground,

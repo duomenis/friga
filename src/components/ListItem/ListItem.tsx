@@ -1,5 +1,6 @@
 import React, {FC} from 'react';
 import {Text, View} from 'react-native';
+import {formatDuration, intervalToDuration} from 'date-fns';
 
 import {ListItemType} from '../../types';
 
@@ -10,17 +11,22 @@ type Props = {
 };
 
 const ListItem: FC<Props> = ({item}) => {
-  const {date, differenceInCalendarDays, name} = item;
-  const absoluteDifference = Math.abs(differenceInCalendarDays);
+  const {date, name, differenceInCalendarDays} = item;
+  const duration = intervalToDuration({
+    start: new Date().setHours(0, 0, 0, 0),
+    end: new Date(date).setHours(0, 0, 0, 0),
+  });
   return (
     <View style={styles.container}>
       <View style={styles.left}>
         <Text style={styles.name}>{name}</Text>
-        <Text>{date}</Text>
-      </View>
-      <View style={styles.right}>
-        <Text style={styles.days}>{absoluteDifference}</Text>
-        <Text>{absoluteDifference === 1 ? 'day' : 'days'}</Text>
+        <Text style={styles.format}>
+          {date} ·{' '}
+          {formatDuration(duration, {
+            format: ['years', 'months', 'days'],
+            delimiter: ', ',
+          })}
+        </Text>
       </View>
     </View>
   );

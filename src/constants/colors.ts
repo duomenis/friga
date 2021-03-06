@@ -1,19 +1,13 @@
 const palette = {
   white: '#ffffff',
   red: '#FA3830',
-  orange: '#FB8B25',
 };
 
 export default {
-  white: '#ffffff',
-  overdueTenDays: palette.red,
-  overdueFiveDays: palette.orange,
-  overdueOneDay: 'yellow',
-  paid: 'green',
-  installmentCardBorder: '#BDBFC3',
-  listHeaderBackground: '#ebebeb',
+  white: palette.white,
   inputBottomBorder: '#bababa',
-  payActionBackground: palette.orange,
+  listActionsBackground: '#ddd',
+  primary: '#2e4793',
+  accent: '#0a84ff',
   deleteActionBackground: palette.red,
-  disabledActionBackground: '#BEC0C4',
 };

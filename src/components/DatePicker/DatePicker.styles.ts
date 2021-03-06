@@ -19,6 +19,6 @@ export default StyleSheet.create({
     fontSize: 16,
   },
   value: {
-    color: '#0A84FF',
+    color: colors.accent,
   },
 });

@@ -23,6 +23,7 @@ import {
 import List from '../List';
 import CreateCounter from '../CreateCounter';
 import DataProvider from '../../DataContext';
+import {LightTheme} from '../../Themes';
 
 const App = () => {
   const scheme = useColorScheme();
@@ -62,6 +63,7 @@ const App = () => {
         labelStyle: {
           fontSize: 12,
         },
+        style: {backgroundColor: 'white'},
       }}>
       <RootTab.Screen
         name="UntilListStack"
@@ -78,7 +80,7 @@ const App = () => {
 
   return (
     <DataProvider>
-      <NavigationContainer theme={scheme === 'dark' ? DarkTheme : DefaultTheme}>
+      <NavigationContainer theme={LightTheme}>
         <RootStack.Navigator
           mode="modal"
           screenOptions={({
@@ -94,7 +96,7 @@ const App = () => {
               navigation
                 .dangerouslyGetState()
                 .routes.findIndex((r) => r.key === route.key) > 0
-                ? 0
+                ? 10
                 : undefined,
             ...TransitionPresets.ModalPresentationIOS,
           })}>

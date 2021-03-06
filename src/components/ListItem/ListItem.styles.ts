@@ -7,10 +7,10 @@ export default StyleSheet.create({
     backgroundColor: colors.white,
     flex: 1,
     flexDirection: 'row',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 16,
-    paddingVertical: 8,
+    paddingVertical: 16,
   },
   left: {
     flex: 1,
@@ -18,12 +18,15 @@ export default StyleSheet.create({
   right: {
     alignItems: 'flex-end',
     justifyContent: 'center',
+    marginLeft: 16,
   },
   name: {
     fontSize: 20,
     marginBottom: 4,
   },
-  days: {
-    fontSize: 24,
+  format: {
+    fontSize: 14,
+    fontWeight: '600',
+    opacity: 0.5,
   },
 });

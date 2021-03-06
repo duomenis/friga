@@ -1,5 +1,5 @@
 import React, {FC, useCallback, useLayoutEffect} from 'react';
-import {View, Button, ListRenderItemInfo} from 'react-native';
+import {View, Button, ListRenderItemInfo, Text} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {differenceInCalendarDays, format} from 'date-fns';
 import {SwipeListView} from 'react-native-swipe-list-view';
@@ -14,6 +14,8 @@ import ListItem from '../../components/ListItem';
 import {useData} from '../../DataContext';
 import ListActions from '../../components/ListActions';
 import Empty from '../../components/Empty';
+
+import styles from './List.styles';
 
 type ListRouteProp = RouteProp<SinceListStackParamList, 'SinceList'>;
 
@@ -36,7 +38,7 @@ const List: FC<ViewProps> = ({navigation, route}) => {
     const diff = differenceInCalendarDays(today, counterDate);
     return {
       ...counter,
-      date: format(new Date(counter.date), 'E, LLLL d, yyyy'),
+      date: format(new Date(counter.date), 'LLLL d, yyyy'),
       differenceInCalendarDays: diff,
     };
   });
@@ -59,7 +61,6 @@ const List: FC<ViewProps> = ({navigation, route}) => {
           title="Add"
         />
       ),
-      headerTitleAlign: 'left',
     });
   }, [navigation]);
 
@@ -88,7 +89,8 @@ const List: FC<ViewProps> = ({navigation, route}) => {
   }
 
   return (
-    <View>
+    <View style={styles.container}>
+      <Text style={styles.title}>DAYS {isSince ? 'SINCE' : 'UNTIL'}</Text>
       <SwipeListView
         data={listCounters}
         renderItem={listItem}
