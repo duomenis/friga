@@ -19,7 +19,7 @@ const ListItem: FC<Props> = ({item}) => {
   });
   return (
     <View style={styles.container}>
-      <Emoji name="mount_fuji" style={styles.icon} />
+      <Emoji name="christmas_tree" />
       <View style={styles.left}>
         <Text style={styles.name}>{name}</Text>
         <Text style={styles.format}>

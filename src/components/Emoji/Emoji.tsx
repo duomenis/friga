@@ -1,17 +1,20 @@
 import React, {FC} from 'react';
-import {Text, TextProps, TextStyle} from 'react-native';
+import {Text, View} from 'react-native';
 import nodeEmoji from 'node-emoji';
+
+import styles from './Emoji.styles';
 
 type Props = {
   name: keyof typeof nodeEmoji.emoji;
-  style: TextStyle;
-} & TextProps;
+};
 
-const Emoji: FC<Props> = ({name, style = {}, ...props}) => {
+const Emoji: FC<Props> = ({name}) => {
   return (
-    <Text style={style} {...props}>
-      {nodeEmoji.get(name)}
-    </Text>
+    <View>
+      <View style={styles.container}>
+        <Text style={styles.icon}>{nodeEmoji.get(name)}</Text>
+      </View>
+    </View>
   );
 };
 

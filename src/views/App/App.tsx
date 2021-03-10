@@ -1,11 +1,6 @@
 import React from 'react';
-import {
-  NavigationContainer,
-  RouteProp,
-  //DefaultTheme,
-  //DarkTheme,
-} from '@react-navigation/native';
-//import {useColorScheme} from 'react-native';
+import {NavigationContainer, RouteProp} from '@react-navigation/native';
+import {useColorScheme} from 'react-native';
 import {
   createStackNavigator,
   StackNavigationProp,
@@ -23,10 +18,10 @@ import {
 import List from '../List';
 import CreateCounter from '../CreateCounter';
 import DataProvider from '../../DataContext';
-import {LightTheme} from '../../Themes';
+import {LightTheme, DarkTheme} from '../../Themes';
 
 const App = () => {
-  //const scheme = useColorScheme();
+  const scheme = useColorScheme();
   const RootStack = createStackNavigator<RootStackParamList>();
   const SinceListStack = createStackNavigator<SinceListStackParamList>();
   const UntilListStack = createStackNavigator<UntilListStackParamList>();
@@ -80,7 +75,7 @@ const App = () => {
 
   return (
     <DataProvider>
-      <NavigationContainer theme={LightTheme}>
+      <NavigationContainer theme={scheme === 'dark' ? DarkTheme : LightTheme}>
         <RootStack.Navigator
           mode="modal"
           screenOptions={({

@@ -4,21 +4,16 @@ import colors from '../../constants/colors';
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: colors.white,
+    backgroundColor: colors.primaryLight,
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 16,
     paddingVertical: 16,
-  },
-  icon: {
-    width: 40,
-    height: 40,
-    marginRight: 8,
-    fontSize: 30,
-    textAlign: 'center',
-    alignContent: 'center',
+    marginHorizontal: 16,
+    marginVertical: 8,
+    borderRadius: 16,
   },
   left: {
     flex: 1,
@@ -26,10 +21,12 @@ export default StyleSheet.create({
   name: {
     fontSize: 20,
     marginBottom: 4,
+    color: colors.textLight,
   },
   format: {
     fontSize: 14,
     fontWeight: '600',
-    opacity: 0.5,
+    opacity: 0.6,
+    color: colors.textLight,
   },
 });

@@ -5,9 +5,21 @@ export const LightTheme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
+    primary: colors.textLight, // tabs text
+    background: colors.white, // view bg
+    text: colors.textLight, // headerText
+    card: colors.white, // header
+  },
+};
+
+export const DarkTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
     primary: colors.primary,
     background: colors.primary,
     text: colors.white,
     card: colors.primary,
+    border: '#2e4793',
   },
 };
