@@ -20,6 +20,7 @@ export default StyleSheet.create({
   },
   name: {
     fontSize: 20,
+    fontWeight: '500',
     marginBottom: 4,
     color: colors.textLight,
   },

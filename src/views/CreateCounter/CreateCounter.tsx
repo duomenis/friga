@@ -60,6 +60,7 @@ const CreateCounter: FC<ViewProps> = ({navigation, route}) => {
       ),
     });
   }, [navigation, name, date, addCounter, today, icon]);
+
   return (
     <View style={styles.container}>
       <TouchableOpacity
