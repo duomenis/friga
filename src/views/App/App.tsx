@@ -1,13 +1,13 @@
 import React from 'react';
 import {NavigationContainer, RouteProp} from '@react-navigation/native';
-import {Text, useColorScheme} from 'react-native';
+import {useColorScheme} from 'react-native';
 import {
   createStackNavigator,
   StackNavigationProp,
   TransitionPresets,
 } from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import nodeEmoji from 'node-emoji';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import {
   RootTabParamList,
@@ -69,9 +69,7 @@ const App = () => {
         options={{
           title: 'Days Until',
           tabBarIcon: ({color, size}) => (
-            <Text style={{color: color, fontSize: size}}>
-              {nodeEmoji.get('soon')}
-            </Text>
+            <Icon name="arrow-right" color={color} size={size} />
           ),
         }}
       />
@@ -81,9 +79,7 @@ const App = () => {
         options={{
           title: 'Days Since',
           tabBarIcon: ({color, size}) => (
-            <Text style={{color: color, fontSize: size}}>
-              {nodeEmoji.get('back')}
-            </Text>
+            <Icon name="arrow-left" color={color} size={size} />
           ),
         }}
       />
