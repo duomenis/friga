@@ -5577,7 +5577,7 @@ react-is@^16.12.0, react-is@^16.13.0, react-is@^16.7.0, react-is@^16.8.1, react-
 
 "react-native-emoji-selector@https://github.com/drac94/react-native-emoji-selector.git":
   version "0.2.0"
-  resolved "https://github.com/drac94/react-native-emoji-selector.git#bf343d86a6a14b7a5703440978218137543881ac"
+  resolved "https://github.com/drac94/react-native-emoji-selector.git#f886f9e79635d4abaecf0d59d0250734fe9aaef9"
   dependencies:
     "@react-native-async-storage/async-storage" "^1.14.1"
     emoji-datasource "^6.0.0"

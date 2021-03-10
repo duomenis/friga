@@ -57,7 +57,7 @@ const List: FC<ViewProps> = ({navigation, route}) => {
     navigation.setOptions({
       headerRight: () => (
         <Button
-          onPress={() => navigation.navigate('CreateCounter')}
+          onPress={() => navigation.navigate('CreateCounter', {})}
           title="Add"
         />
       ),
@@ -82,7 +82,7 @@ const List: FC<ViewProps> = ({navigation, route}) => {
   if (!listCounters || listCounters.length === 0) {
     return (
       <Empty
-        action={() => navigation.navigate('CreateCounter')}
+        action={() => navigation.navigate('CreateCounter', {})}
         type={isSince ? 'Since' : 'Until'}
       />
     );

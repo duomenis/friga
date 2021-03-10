@@ -1,50 +1,26 @@
-import React from 'react';
-import {StyleSheet, Text, View, SafeAreaView} from 'react-native';
+import React, {FC} from 'react';
+import {SafeAreaView} from 'react-native';
+import {StackNavigationProp} from '@react-navigation/stack';
+import nodeEmoji from 'node-emoji';
 
-import EmojiSelector, {Categories} from 'react-native-emoji-selector';
-const THEME = '#007AFF';
+import EmojiSelector from 'react-native-emoji-selector';
+import {RootStackParamList} from '../../types';
 
-export default class App extends React.Component {
-  state = {
-    emoji: ' ',
+import styles from './EmojiPicker.styles';
+
+type ViewProps = {
+  navigation: StackNavigationProp<RootStackParamList>;
+};
+
+const EmojiPicker: FC<ViewProps> = ({navigation}) => {
+  const handleEmojiSelect = (emoji: keyof typeof nodeEmoji.emoji) => {
+    navigation.navigate('CreateCounter', {icon: emoji});
   };
-  render() {
-    return (
-      <SafeAreaView style={styles.container}>
-        <Text>Please select the emoji you would like to use</Text>
-        <View style={styles.display}>
-          <Text style={{fontSize: 64, backgroundColor: 'transparent'}}>
-            {this.state.emoji}
-          </Text>
-        </View>
-        <EmojiSelector
-          onEmojiSelected={(emoji) => this.setState({emoji})}
-          showSearchBar={true}
-          showTabs={true}
-          showHistory={true}
-          showSectionTitles={true}
-          category={Categories.all}
-        />
-      </SafeAreaView>
-    );
-  }
-}
+  return (
+    <SafeAreaView style={styles.container}>
+      <EmojiSelector onEmojiSelected={handleEmojiSelect} showHistory={true} />
+    </SafeAreaView>
+  );
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  display: {
-    width: 96,
-    height: 96,
-    margin: 24,
-    borderWidth: 2,
-    borderRadius: 12,
-    borderColor: THEME,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default EmojiPicker;

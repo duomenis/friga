@@ -12,14 +12,14 @@ type Props = {
 };
 
 const ListItem: FC<Props> = ({item}) => {
-  const {date, name} = item;
+  const {date, name, icon} = item;
   const duration = intervalToDuration({
     start: new Date().setHours(0, 0, 0, 0),
     end: new Date(date).setHours(0, 0, 0, 0),
   });
   return (
     <View style={styles.container}>
-      <Emoji name="christmas_tree" />
+      <Emoji name={icon || 'christmas_tree'} />
       <View style={styles.left}>
         <Text style={styles.name}>{name}</Text>
         <Text style={styles.format}>

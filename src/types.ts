@@ -1,4 +1,5 @@
 import {NavigatorScreenParams} from '@react-navigation/native';
+import nodeEmoji from 'node-emoji';
 
 /**Navigation types */
 
@@ -17,13 +18,14 @@ export type RootTabParamList = {
 
 export type RootStackParamList = {
   RootTab: NavigatorScreenParams<RootTabParamList>;
-  CreateCounter: undefined;
+  CreateCounter: {icon?: keyof typeof nodeEmoji.emoji};
   EmojiPicker: undefined;
 };
 /**End Navigation types */
 
 export type Counter = {
   key: string;
+  icon: keyof typeof nodeEmoji.emoji;
   name: string;
   date: string;
 };
