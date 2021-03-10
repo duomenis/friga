@@ -1,5 +1,5 @@
-import React, {FC} from 'react';
-import {SafeAreaView} from 'react-native';
+import React, {FC, useLayoutEffect} from 'react';
+import {SafeAreaView, Button} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import nodeEmoji from 'node-emoji';
 
@@ -13,6 +13,13 @@ type ViewProps = {
 };
 
 const EmojiPicker: FC<ViewProps> = ({navigation}) => {
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => (
+        <Button onPress={() => navigation.goBack()} title="Cancel" />
+      ),
+    });
+  }, [navigation]);
   const handleEmojiSelect = (emoji: keyof typeof nodeEmoji.emoji) => {
     navigation.navigate('CreateCounter', {icon: emoji});
   };

@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-//import colors from '../../constants/colors';
+import colors from '../../constants/colors';
 
 export default StyleSheet.create({
   container: {
@@ -17,7 +17,7 @@ export default StyleSheet.create({
     margin: 24,
     borderWidth: 2,
     borderRadius: 12,
-    borderColor: '#007AFF',
+    borderColor: colors.primaryLight,
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'center',

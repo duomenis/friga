@@ -7,7 +7,7 @@ export default StyleSheet.create({
     backgroundColor: colors.white,
     borderRadius: 10,
     marginRight: 8,
-    padding: 4,
+    padding: 8,
   },
   icon: {
     fontSize: 20,

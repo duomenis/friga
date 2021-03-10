@@ -36,7 +36,7 @@ const App = () => {
         name="UntilList"
         component={List}
         options={{
-          title: 'County',
+          title: 'Countly',
         }}
       />
     </UntilListStack.Navigator>
@@ -49,7 +49,7 @@ const App = () => {
         component={List}
         initialParams={{since: true}}
         options={{
-          title: 'County',
+          title: 'Countly',
         }}
       />
     </SinceListStack.Navigator>
@@ -120,7 +120,7 @@ const App = () => {
             component={RootTabScreens}
             options={{
               headerShown: false,
-              title: 'County',
+              title: 'Countly',
             }}
           />
           <RootStack.Screen
@@ -131,7 +131,7 @@ const App = () => {
           <RootStack.Screen
             name="EmojiPicker"
             component={EmojiPicker}
-            options={{title: 'Choose Emoji'}}
+            options={{title: 'Choose Icon'}}
           />
         </RootStack.Navigator>
       </NavigationContainer>
