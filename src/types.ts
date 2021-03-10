@@ -18,6 +18,7 @@ export type RootTabParamList = {
 export type RootStackParamList = {
   RootTab: NavigatorScreenParams<RootTabParamList>;
   CreateCounter: undefined;
+  EmojiPicker: undefined;
 };
 /**End Navigation types */
 

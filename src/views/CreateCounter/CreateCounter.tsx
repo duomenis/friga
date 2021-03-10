@@ -66,6 +66,10 @@ const CreateCounter: FC<ViewProps> = ({navigation}) => {
           selectedDate && setDate(format(selectedDate, 'yyyy/MM/dd'))
         }
       />
+      <Button
+        title="Emoji"
+        onPress={() => navigation.navigate('EmojiPicker')}
+      />
     </View>
   );
 };

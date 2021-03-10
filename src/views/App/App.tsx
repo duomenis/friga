@@ -15,10 +15,12 @@ import {
   UntilListStackParamList,
 } from '../../types';
 
-import List from '../List';
-import CreateCounter from '../CreateCounter';
 import DataProvider from '../../DataContext';
 import {LightTheme, DarkTheme} from '../../Themes';
+
+import List from '../List';
+import CreateCounter from '../CreateCounter';
+import EmojiPicker from '../EmojiPicker';
 
 const App = () => {
   const scheme = useColorScheme();
@@ -82,7 +84,10 @@ const App = () => {
             route,
             navigation,
           }: {
-            route: RouteProp<RootStackParamList, 'RootTab' | 'CreateCounter'>;
+            route: RouteProp<
+              RootStackParamList,
+              'RootTab' | 'CreateCounter' | 'EmojiPicker'
+            >;
             navigation: StackNavigationProp<RootStackParamList>;
           }) => ({
             gestureEnabled: true,
@@ -107,6 +112,11 @@ const App = () => {
             name="CreateCounter"
             component={CreateCounter}
             options={{title: 'New Counter'}}
+          />
+          <RootStack.Screen
+            name="EmojiPicker"
+            component={EmojiPicker}
+            options={{title: 'Choose Emoji'}}
           />
         </RootStack.Navigator>
       </NavigationContainer>
