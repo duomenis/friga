@@ -1,11 +1,11 @@
 import React, {FC} from 'react';
-import {Text, View, Image} from 'react-native';
+import {Text, View} from 'react-native';
 import {formatDuration, intervalToDuration} from 'date-fns';
 
 import {ListItemType} from '../../types';
+import Emoji from '../Emoji';
 
 import styles from './ListItem.styles';
-import images from '../../images';
 
 type Props = {
   item: ListItemType;
@@ -19,7 +19,7 @@ const ListItem: FC<Props> = ({item}) => {
   });
   return (
     <View style={styles.container}>
-      <Image style={styles.icon} source={images.Empty} />
+      <Emoji name="mount_fuji" style={styles.icon} />
       <View style={styles.left}>
         <Text style={styles.name}>{name}</Text>
         <Text style={styles.format}>

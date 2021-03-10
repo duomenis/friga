@@ -12,7 +12,14 @@ export default StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 16,
   },
-  icon: {width: 40, height: 40, marginRight: 8},
+  icon: {
+    width: 40,
+    height: 40,
+    marginRight: 8,
+    fontSize: 30,
+    textAlign: 'center',
+    alignContent: 'center',
+  },
   left: {
     flex: 1,
   },
