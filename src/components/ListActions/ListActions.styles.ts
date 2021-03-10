@@ -12,8 +12,8 @@ export default StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 16,
     marginHorizontal: 16,
-    marginVertical: 8,
-    borderRadius: 16,
+    marginVertical: 6,
+    borderRadius: 24,
   },
   backRightBtn: {
     alignItems: 'center',
@@ -22,8 +22,8 @@ export default StyleSheet.create({
     position: 'absolute',
     top: 0,
     width: 75,
-    borderTopRightRadius: 16,
-    borderBottomRightRadius: 16,
+    borderTopRightRadius: 24,
+    borderBottomRightRadius: 24,
   },
   backRightBtnRight: {
     backgroundColor: colors.deleteActionBackground,

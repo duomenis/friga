@@ -1,12 +1,13 @@
 import React from 'react';
 import {NavigationContainer, RouteProp} from '@react-navigation/native';
-import {useColorScheme} from 'react-native';
+import {Text, useColorScheme} from 'react-native';
 import {
   createStackNavigator,
   StackNavigationProp,
   TransitionPresets,
 } from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import nodeEmoji from 'node-emoji';
 
 import {
   RootTabParamList,
@@ -65,12 +66,26 @@ const App = () => {
       <RootTab.Screen
         name="UntilListStack"
         component={UntilListStackScreens}
-        options={{title: 'Days Until'}}
+        options={{
+          title: 'Days Until',
+          tabBarIcon: ({color, size}) => (
+            <Text style={{color: color, fontSize: size}}>
+              {nodeEmoji.get('soon')}
+            </Text>
+          ),
+        }}
       />
       <RootTab.Screen
         name="SinceListStack"
         component={SinceListStackScreens}
-        options={{title: 'Days Since'}}
+        options={{
+          title: 'Days Since',
+          tabBarIcon: ({color, size}) => (
+            <Text style={{color: color, fontSize: size}}>
+              {nodeEmoji.get('back')}
+            </Text>
+          ),
+        }}
       />
     </RootTab.Navigator>
   );

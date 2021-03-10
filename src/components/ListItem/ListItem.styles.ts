@@ -12,8 +12,8 @@ export default StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 16,
     marginHorizontal: 16,
-    marginVertical: 8,
-    borderRadius: 16,
+    marginVertical: 6,
+    borderRadius: 24,
   },
   left: {
     flex: 1,

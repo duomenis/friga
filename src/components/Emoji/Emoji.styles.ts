@@ -5,7 +5,7 @@ import colors from '../../constants/colors';
 export default StyleSheet.create({
   container: {
     backgroundColor: colors.white,
-    borderRadius: 8,
+    borderRadius: 10,
     marginRight: 8,
     padding: 4,
   },
