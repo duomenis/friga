@@ -15,7 +15,10 @@ const Empty: FC<Props> = ({action, type}) => {
   const scheme = useColorScheme() || 'light';
   return (
     <View style={styles(scheme).container}>
-      <Image style={styles().image} source={Images.Empty} />
+      <Image
+        style={styles().image}
+        source={scheme === 'light' ? Images.Empty : Images.EmptyDark}
+      />
       <Text style={styles(scheme).text}>No {type} Counters, yet.</Text>
       <Text style={styles(scheme).info}>Start adding some.</Text>
       <Button
