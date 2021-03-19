@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {Text, View, useColorScheme} from 'react-native';
+import {Text, View, useColorScheme, TouchableOpacity} from 'react-native';
 import {formatDuration, intervalToDuration} from 'date-fns';
 
 import {ListItemType} from '../../types';
@@ -9,9 +9,10 @@ import {styles} from './ListItem.styles';
 
 type Props = {
   item: ListItemType;
+  onPress: (item: ListItemType) => void;
 };
 
-const ListItem: FC<Props> = ({item}) => {
+const ListItem: FC<Props> = ({item, onPress}) => {
   const scheme = useColorScheme() || 'light';
   const {date, name, icon} = item;
   const duration = intervalToDuration({
@@ -19,8 +20,10 @@ const ListItem: FC<Props> = ({item}) => {
     end: new Date(date).setHours(0, 0, 0, 0),
   });
   return (
-    <View style={styles(scheme).container}>
-      <Emoji name={icon || 'hourglass_flowing_sand'} />
+    <TouchableOpacity
+      style={styles(scheme).container}
+      onPress={() => onPress(item)}>
+      <Emoji name={icon} />
       <View style={styles().left}>
         <Text style={styles(scheme).name}>{name}</Text>
         <Text style={styles(scheme).format}>
@@ -31,7 +34,7 @@ const ListItem: FC<Props> = ({item}) => {
           })}
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

@@ -25,7 +25,7 @@ const EmojiPicker: FC<ViewProps> = ({navigation}) => {
         />
       ),
     });
-  }, [navigation]);
+  }, [navigation, scheme]);
   const handleEmojiSelect = (emoji: keyof typeof nodeEmoji.emoji) => {
     navigation.navigate('CreateCounter', {icon: emoji});
   };

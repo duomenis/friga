@@ -2,7 +2,6 @@ import React, {FC, useLayoutEffect, useState} from 'react';
 import {Button, useColorScheme} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import 'react-native-get-random-values';
-import {nanoid} from 'nanoid';
 import {differenceInCalendarDays, format} from 'date-fns';
 import {RouteProp} from '@react-navigation/native';
 
@@ -11,24 +10,30 @@ import {RootStackParamList} from '../../types';
 import colors from '../../constants/colors';
 import CounterForm from '../../components/CounterForm/CounterForm';
 
-type ListRouteProp = RouteProp<RootStackParamList, 'CreateCounter'>;
+type ListRouteProp = RouteProp<RootStackParamList, 'EditCounter'>;
 
 type ViewProps = {
   navigation: StackNavigationProp<RootStackParamList>;
   route: ListRouteProp;
 };
 
-const CreateCounter: FC<ViewProps> = ({navigation, route}) => {
+const EditCounter: FC<ViewProps> = ({navigation, route}) => {
   const scheme = useColorScheme() || 'light';
-  const {addCounter} = useData();
-  const icon = route.params?.icon || 'hourglass_flowing_sand';
+  const {updateCounter} = useData();
+  const {counter} = route.params;
   const today = new Date().setHours(0, 0, 0, 0);
-  const [name, setName] = useState<string>('');
-  const [date, setDate] = useState<string>(format(new Date(), 'yyyy/MM/dd'));
+  const [name, setName] = useState<string>(counter.name);
+  const [date, setDate] = useState<string>(
+    format(new Date(counter.date), 'yyyy/MM/dd'),
+  );
 
   useLayoutEffect(() => {
-    const handleAddButtonClick = () => {
-      addCounter({key: nanoid(), icon, name, date});
+    const handleSaveButtonClick = () => {
+      updateCounter({
+        ...counter,
+        name,
+        date,
+      });
       const counterDate = new Date(date).setHours(0, 0, 0, 0);
       const diff = differenceInCalendarDays(today, counterDate);
       if (diff >= 0) {
@@ -49,8 +54,8 @@ const CreateCounter: FC<ViewProps> = ({navigation, route}) => {
         <Button
           color={colors[scheme].accent}
           disabled={!name || !date}
-          onPress={handleAddButtonClick}
-          title="Add"
+          onPress={handleSaveButtonClick}
+          title="Save"
         />
       ),
       headerLeft: () => (
@@ -61,7 +66,7 @@ const CreateCounter: FC<ViewProps> = ({navigation, route}) => {
         />
       ),
     });
-  }, [navigation, name, date, addCounter, today, icon, scheme]);
+  }, [navigation, name, date, scheme, counter, updateCounter]);
 
   const handleNameChange = (value: string) => {
     setName(value);
@@ -75,12 +80,12 @@ const CreateCounter: FC<ViewProps> = ({navigation, route}) => {
     <CounterForm
       name={name}
       date={date}
-      icon={icon}
       onNameChange={handleNameChange}
       onDateChange={handleDateChange}
+      icon={counter.icon}
       navigation={navigation}
     />
   );
 };
 
-export default CreateCounter;
+export default EditCounter;

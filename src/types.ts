@@ -19,6 +19,7 @@ export type RootTabParamList = {
 export type RootStackParamList = {
   RootTab: NavigatorScreenParams<RootTabParamList>;
   CreateCounter: {icon?: keyof typeof nodeEmoji.emoji};
+  EditCounter: {counter: Counter};
   EmojiPicker: undefined;
 };
 /**End Navigation types */

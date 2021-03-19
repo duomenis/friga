@@ -1,8 +1,7 @@
 import React, {FC, useCallback, useLayoutEffect} from 'react';
-import {View, ListRenderItemInfo, Text, useColorScheme} from 'react-native';
+import {View, Text, useColorScheme} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {differenceInCalendarDays, format} from 'date-fns';
-import {SwipeListView} from 'react-native-swipe-list-view';
 import {RouteProp} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Feather';
 
@@ -13,11 +12,10 @@ import {
 } from '../../types';
 import ListItem from '../../components/ListItem';
 import {useData} from '../../DataContext';
-import ListActions from '../../components/ListActions';
 import Empty from '../../components/Empty';
 
 import {styles} from './List.styles';
-import {TouchableHighlight} from 'react-native-gesture-handler';
+import {FlatList, TouchableHighlight} from 'react-native-gesture-handler';
 import colors from '../../constants/colors';
 
 type ListRouteProp = RouteProp<SinceListStackParamList, 'SinceList'>;
@@ -31,7 +29,6 @@ const List: FC<ViewProps> = ({navigation, route}) => {
   const scheme = useColorScheme() || 'light';
   const {
     state: {counters},
-    deleteCounter,
   } = useData();
 
   const isSince = route.params?.since;
@@ -72,18 +69,13 @@ const List: FC<ViewProps> = ({navigation, route}) => {
   }, [navigation, scheme]);
 
   const listItem = useCallback(
-    ({item}: {item: ListItemType}) => <ListItem item={item} />,
-    [],
-  );
-
-  const listActions = useCallback(
-    (data: ListRenderItemInfo<ListItemType>) => {
-      const handleDelete = (key: string) => {
-        deleteCounter(key);
+    ({item}: {item: ListItemType}) => {
+      const handleItemPress = (counter: ListItemType) => {
+        navigation.navigate('EditCounter', {counter});
       };
-      return <ListActions data={data} onDelete={handleDelete} />;
+      return <ListItem item={item} onPress={handleItemPress} />;
     },
-    [deleteCounter],
+    [navigation],
   );
 
   if (!listCounters || listCounters.length === 0) {
@@ -100,18 +92,7 @@ const List: FC<ViewProps> = ({navigation, route}) => {
       <Text style={styles(scheme).title}>
         Days {isSince ? 'Since' : 'Until'}
       </Text>
-      <SwipeListView
-        data={listCounters}
-        renderItem={listItem}
-        renderHiddenItem={listActions}
-        closeOnScroll
-        closeOnRowOpen
-        closeOnRowPress
-        disableRightSwipe
-        leftOpenValue={0}
-        rightOpenValue={-75}
-        swipeToOpenPercent={20}
-      />
+      <FlatList data={listCounters} renderItem={listItem} />
     </View>
   );
 };

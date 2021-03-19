@@ -21,6 +21,7 @@ import {
 
 import List from '../List';
 import CreateCounter from '../CreateCounter';
+import EditCounter from '../EditCounter';
 import EmojiPicker from '../EmojiPicker';
 
 const App = () => {
@@ -100,7 +101,7 @@ const App = () => {
           }: {
             route: RouteProp<
               RootStackParamList,
-              'RootTab' | 'CreateCounter' | 'EmojiPicker'
+              'RootTab' | 'CreateCounter' | 'EmojiPicker' | 'EditCounter'
             >;
             navigation: StackNavigationProp<RootStackParamList>;
           }) => ({
@@ -126,6 +127,11 @@ const App = () => {
             name="CreateCounter"
             component={CreateCounter}
             options={{title: 'New Counter'}}
+          />
+          <RootStack.Screen
+            name="EditCounter"
+            component={EditCounter}
+            options={{title: 'Edit Counter'}}
           />
           <RootStack.Screen
             name="EmojiPicker"

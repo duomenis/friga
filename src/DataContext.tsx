@@ -23,12 +23,14 @@ type Action =
 
 type Context = {
   addCounter: (counter: Counter) => void;
+  updateCounter: (counter: Counter) => void;
   deleteCounter: (key: string) => void;
   state: State;
 };
 
 export const DataContext = createContext<Context>({
   addCounter: (_: Counter) => console.warn('no provider'),
+  updateCounter: (_: Counter) => console.warn('no provider'),
   deleteCounter: (_: string) => console.warn('no provider'),
   state: {isLoading: false},
 });
@@ -76,6 +78,20 @@ const DataProvider: FC<Props> = ({children}) => {
         );
         if (indexToDelete > -1) {
           counters.splice(indexToDelete, 1);
+          AsyncStorage.setItem('@county_counters', JSON.stringify(counters))
+            .then(() => dispatch({type: 'UPDATE_COUNTERS', counters: counters}))
+            .catch(() => {
+              console.error('AsyncStorage: ');
+            });
+        }
+      },
+      updateCounter: (counter: Counter) => {
+        const counters = [...(state.counters || [])];
+        const indexToUpdate = counters.findIndex(
+          (count) => count.key === counter.key,
+        );
+        if (indexToUpdate > -1) {
+          counters[indexToUpdate] = counter;
           AsyncStorage.setItem('@county_counters', JSON.stringify(counters))
             .then(() => dispatch({type: 'UPDATE_COUNTERS', counters: counters}))
             .catch(() => {
