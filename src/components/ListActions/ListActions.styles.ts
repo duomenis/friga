@@ -5,7 +5,7 @@ import colors from '../../constants/colors';
 export default StyleSheet.create({
   rowBack: {
     alignItems: 'center',
-    backgroundColor: colors.cardBackground,
+    backgroundColor: colors['light'].cardBackground,
     flex: 1,
     flexDirection: 'row',
     paddingLeft: 15,
@@ -30,6 +30,6 @@ export default StyleSheet.create({
     right: 0,
   },
   backTextWhite: {
-    color: colors.viewBackground,
+    color: colors['light'].viewBackground,
   },
 });

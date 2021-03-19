@@ -1,8 +1,8 @@
 import React, {FC} from 'react';
 
-import {TextInput, TextInputProps} from 'react-native';
+import {TextInput, TextInputProps, useColorScheme} from 'react-native';
 
-import styles from './Input.styles';
+import {styles} from './Input.styles';
 
 type Props = {
   borderless?: boolean;
@@ -18,11 +18,12 @@ const Input: FC<Props> = ({
   secureTextEntry,
   autoCapitalize,
 }) => {
+  const scheme = useColorScheme() || 'light';
   return (
     <TextInput
       placeholder={placeholder}
       onChangeText={onChangeText}
-      style={[styles.input, borderless ? {} : styles.border]}
+      style={[styles(scheme).input, borderless ? {} : styles().border]}
       value={value}
       editable={editable}
       keyboardType={keyboardType}

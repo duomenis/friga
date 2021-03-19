@@ -24,7 +24,7 @@ import CreateCounter from '../CreateCounter';
 import EmojiPicker from '../EmojiPicker';
 
 const App = () => {
-  const scheme = useColorScheme();
+  const scheme = useColorScheme() || 'light';
   const RootStack = createStackNavigator<RootStackParamList>();
   const SinceListStack = createStackNavigator<SinceListStackParamList>();
   const UntilListStack = createStackNavigator<UntilListStackParamList>();
@@ -62,8 +62,8 @@ const App = () => {
           fontSize: 12,
         },
         style: {
-          backgroundColor: colors.tabNavigatorBackground,
-          borderTopColor: colors.tabNavigatorBorder,
+          backgroundColor: colors[scheme].tabNavigatorBackground,
+          borderTopColor: colors[scheme].tabNavigatorBorder,
         },
       }}>
       <RootTab.Screen

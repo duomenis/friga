@@ -5,11 +5,11 @@ export const LightTheme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    primary: colors.accent, // tabs text
-    background: colors.viewBackground, // view bg
-    text: colors.primaryText, // headerText
-    card: colors.viewBackground, // header
-    border: colors.viewBackground,
+    primary: colors.light.accent, // tabs text
+    background: colors.light.viewBackground, // view bg
+    text: colors.light.primaryText, // headerText
+    card: colors.light.viewBackground, // header
+    border: colors.light.viewBackground,
   },
 };
 
@@ -17,5 +17,10 @@ export const DarkTheme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
+    primary: colors.dark.accent, // tabs text
+    background: colors.dark.viewBackground, // view bg
+    text: colors.dark.primaryText, // headerText
+    card: colors.dark.viewBackground, // header
+    border: colors.dark.viewBackground,
   },
 };

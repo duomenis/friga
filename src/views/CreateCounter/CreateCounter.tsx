@@ -1,5 +1,5 @@
 import React, {FC, useLayoutEffect, useState} from 'react';
-import {View, Button, Text} from 'react-native';
+import {View, Button, Text, useColorScheme} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import 'react-native-get-random-values';
 import {nanoid} from 'nanoid';
@@ -14,7 +14,7 @@ import DatePicker from '../../components/DatePicker';
 import Input from '../../components/Input';
 import colors from '../../constants/colors';
 
-import styles from './CreateCounter.styles';
+import {styles} from './CreateCounter.styles';
 
 type ListRouteProp = RouteProp<RootStackParamList, 'CreateCounter'>;
 
@@ -24,6 +24,7 @@ type ViewProps = {
 };
 
 const CreateCounter: FC<ViewProps> = ({navigation, route}) => {
+  const scheme = useColorScheme() || 'light';
   const {addCounter} = useData();
   const icon = route.params?.icon || 'christmas_tree';
   const today = new Date().setHours(0, 0, 0, 0);
@@ -51,7 +52,7 @@ const CreateCounter: FC<ViewProps> = ({navigation, route}) => {
     navigation.setOptions({
       headerRight: () => (
         <Button
-          color={colors.accent}
+          color={colors[scheme].accent}
           disabled={!name || !date}
           onPress={handleAddButtonClick}
           title="Add"
@@ -59,20 +60,20 @@ const CreateCounter: FC<ViewProps> = ({navigation, route}) => {
       ),
       headerLeft: () => (
         <Button
-          color={colors.accent}
+          color={colors[scheme].accent}
           onPress={() => navigation.goBack()}
           title="Cancel"
         />
       ),
     });
-  }, [navigation, name, date, addCounter, today, icon]);
+  }, [navigation, name, date, addCounter, today, icon, scheme]);
 
   return (
-    <View style={styles.container}>
+    <View style={styles().container}>
       <TouchableOpacity
-        style={styles.icon}
+        style={styles(scheme).icon}
         onPress={() => navigation.navigate('EmojiPicker')}>
-        <Text style={styles.emoji}>{nodeEmoji.get(icon)}</Text>
+        <Text style={styles().emoji}>{nodeEmoji.get(icon)}</Text>
       </TouchableOpacity>
       <Input placeholder="Name" value={name} onChangeText={setName} />
       <DatePicker

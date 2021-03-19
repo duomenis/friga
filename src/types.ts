@@ -34,3 +34,5 @@ export type ListItemType = {
   key: string;
   differenceInCalendarDays: number;
 } & Counter;
+
+export type scheme = 'light' | 'dark';

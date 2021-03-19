@@ -1,5 +1,5 @@
 import React, {FC, useCallback, useLayoutEffect} from 'react';
-import {View, ListRenderItemInfo, Text} from 'react-native';
+import {View, ListRenderItemInfo, Text, useColorScheme} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {differenceInCalendarDays, format} from 'date-fns';
 import {SwipeListView} from 'react-native-swipe-list-view';
@@ -16,7 +16,7 @@ import {useData} from '../../DataContext';
 import ListActions from '../../components/ListActions';
 import Empty from '../../components/Empty';
 
-import styles from './List.styles';
+import {styles} from './List.styles';
 import {TouchableHighlight} from 'react-native-gesture-handler';
 import colors from '../../constants/colors';
 
@@ -28,6 +28,7 @@ type ViewProps = {
 };
 
 const List: FC<ViewProps> = ({navigation, route}) => {
+  const scheme = useColorScheme() || 'light';
   const {
     state: {counters},
     deleteCounter,
@@ -61,14 +62,14 @@ const List: FC<ViewProps> = ({navigation, route}) => {
       headerRight: () => (
         <TouchableHighlight
           activeOpacity={0.6}
-          underlayColor={colors.viewBackground}
-          style={styles.buttonContainer}
+          underlayColor={colors[scheme].viewBackground}
+          style={styles().buttonContainer}
           onPress={() => navigation.navigate('CreateCounter', {})}>
-          <Icon name="plus" style={styles.button} size={28} />
+          <Icon name="plus" style={styles(scheme).button} size={28} />
         </TouchableHighlight>
       ),
     });
-  }, [navigation]);
+  }, [navigation, scheme]);
 
   const listItem = useCallback(
     ({item}: {item: ListItemType}) => <ListItem item={item} />,
@@ -95,8 +96,10 @@ const List: FC<ViewProps> = ({navigation, route}) => {
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Days {isSince ? 'Since' : 'Until'}</Text>
+    <View style={styles().container}>
+      <Text style={styles(scheme).title}>
+        Days {isSince ? 'Since' : 'Until'}
+      </Text>
       <SwipeListView
         data={listCounters}
         renderItem={listItem}
