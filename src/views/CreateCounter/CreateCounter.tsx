@@ -5,15 +5,16 @@ import 'react-native-get-random-values';
 import {nanoid} from 'nanoid';
 import {differenceInCalendarDays, format} from 'date-fns';
 import nodeEmoji from 'node-emoji';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import {RouteProp} from '@react-navigation/native';
 
 import {useData} from '../../DataContext';
 import {RootStackParamList} from '../../types';
 import DatePicker from '../../components/DatePicker';
 import Input from '../../components/Input';
+import colors from '../../constants/colors';
 
 import styles from './CreateCounter.styles';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import {RouteProp} from '@react-navigation/native';
 
 type ListRouteProp = RouteProp<RootStackParamList, 'CreateCounter'>;
 
@@ -50,13 +51,18 @@ const CreateCounter: FC<ViewProps> = ({navigation, route}) => {
     navigation.setOptions({
       headerRight: () => (
         <Button
+          color={colors.accent}
           disabled={!name || !date}
           onPress={handleAddButtonClick}
           title="Add"
         />
       ),
       headerLeft: () => (
-        <Button onPress={() => navigation.goBack()} title="Cancel" />
+        <Button
+          color={colors.accent}
+          onPress={() => navigation.goBack()}
+          title="Cancel"
+        />
       ),
     });
   }, [navigation, name, date, addCounter, today, icon]);
