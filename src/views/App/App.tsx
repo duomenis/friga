@@ -7,7 +7,7 @@ import {
   TransitionPresets,
 } from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/Feather';
 
 import {
   RootTabParamList,
@@ -36,7 +36,7 @@ const App = () => {
         name="UntilList"
         component={List}
         options={{
-          title: 'Countly',
+          title: 'COUNTLY',
         }}
       />
     </UntilListStack.Navigator>
@@ -49,7 +49,7 @@ const App = () => {
         component={List}
         initialParams={{since: true}}
         options={{
-          title: 'Countly',
+          title: 'COUNTLY',
         }}
       />
     </SinceListStack.Navigator>
@@ -69,7 +69,7 @@ const App = () => {
         options={{
           title: 'Days Until',
           tabBarIcon: ({color, size}) => (
-            <Icon name="arrow-right" color={color} size={size} />
+            <Icon name="fast-forward" color={color} size={size} />
           ),
         }}
       />
@@ -79,7 +79,7 @@ const App = () => {
         options={{
           title: 'Days Since',
           tabBarIcon: ({color, size}) => (
-            <Icon name="arrow-left" color={color} size={size} />
+            <Icon name="rewind" color={color} size={size} />
           ),
         }}
       />
@@ -116,7 +116,7 @@ const App = () => {
             component={RootTabScreens}
             options={{
               headerShown: false,
-              title: 'Countly',
+              title: 'COUNTLY',
             }}
           />
           <RootStack.Screen

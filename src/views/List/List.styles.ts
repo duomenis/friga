@@ -6,6 +6,17 @@ export default StyleSheet.create({
   container: {
     flex: 1,
   },
+  buttonContainer: {
+    backgroundColor: colors.primaryLight,
+    paddingLeft: 12,
+    paddingRight: 20,
+    paddingVertical: 6,
+    borderTopLeftRadius: 18,
+    borderBottomLeftRadius: 18,
+  },
+  button: {
+    color: colors.white,
+  },
   title: {
     fontSize: 14,
     fontWeight: '700',

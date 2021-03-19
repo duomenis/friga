@@ -4,6 +4,7 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {differenceInCalendarDays, format} from 'date-fns';
 import {SwipeListView} from 'react-native-swipe-list-view';
 import {RouteProp} from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/Feather';
 
 import {
   ListItemType,
@@ -16,6 +17,11 @@ import ListActions from '../../components/ListActions';
 import Empty from '../../components/Empty';
 
 import styles from './List.styles';
+import {
+  TouchableHighlight,
+  TouchableOpacity,
+} from 'react-native-gesture-handler';
+import colors from '../../constants/colors';
 
 type ListRouteProp = RouteProp<SinceListStackParamList, 'SinceList'>;
 
@@ -56,10 +62,13 @@ const List: FC<ViewProps> = ({navigation, route}) => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <Button
-          onPress={() => navigation.navigate('CreateCounter', {})}
-          title="Add"
-        />
+        <TouchableHighlight
+          activeOpacity={0.6}
+          underlayColor={colors.listActionsBackground}
+          style={styles.buttonContainer}
+          onPress={() => navigation.navigate('CreateCounter', {})}>
+          <Icon name="plus" style={styles.button} size={24} />
+        </TouchableHighlight>
       ),
     });
   }, [navigation]);
