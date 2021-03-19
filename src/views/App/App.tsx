@@ -1,13 +1,13 @@
 import React from 'react';
 import {NavigationContainer, RouteProp} from '@react-navigation/native';
-import {Text, useColorScheme} from 'react-native';
+import {useColorScheme} from 'react-native';
 import {
   createStackNavigator,
   StackNavigationProp,
   TransitionPresets,
 } from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import nodeEmoji from 'node-emoji';
+import Icon from 'react-native-vector-icons/Feather';
 
 import {
   RootTabParamList,
@@ -36,7 +36,7 @@ const App = () => {
         name="UntilList"
         component={List}
         options={{
-          title: 'Countly',
+          title: 'COUNTLY',
         }}
       />
     </UntilListStack.Navigator>
@@ -49,7 +49,7 @@ const App = () => {
         component={List}
         initialParams={{since: true}}
         options={{
-          title: 'Countly',
+          title: 'COUNTLY',
         }}
       />
     </SinceListStack.Navigator>
@@ -69,9 +69,7 @@ const App = () => {
         options={{
           title: 'Days Until',
           tabBarIcon: ({color, size}) => (
-            <Text style={{color: color, fontSize: size}}>
-              {nodeEmoji.get('soon')}
-            </Text>
+            <Icon name="fast-forward" color={color} size={size} />
           ),
         }}
       />
@@ -81,9 +79,7 @@ const App = () => {
         options={{
           title: 'Days Since',
           tabBarIcon: ({color, size}) => (
-            <Text style={{color: color, fontSize: size}}>
-              {nodeEmoji.get('back')}
-            </Text>
+            <Icon name="rewind" color={color} size={size} />
           ),
         }}
       />
@@ -120,7 +116,7 @@ const App = () => {
             component={RootTabScreens}
             options={{
               headerShown: false,
-              title: 'Countly',
+              title: 'COUNTLY',
             }}
           />
           <RootStack.Screen
