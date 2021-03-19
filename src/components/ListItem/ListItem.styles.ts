@@ -4,7 +4,7 @@ import colors from '../../constants/colors';
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: colors.primaryLight,
+    backgroundColor: colors.cardBackground,
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
@@ -13,7 +13,7 @@ export default StyleSheet.create({
     paddingVertical: 16,
     marginHorizontal: 16,
     marginVertical: 6,
-    borderRadius: 24,
+    borderRadius: 8,
   },
   left: {
     flex: 1,
@@ -22,12 +22,10 @@ export default StyleSheet.create({
     fontSize: 20,
     fontWeight: '500',
     marginBottom: 4,
-    color: colors.textLight,
+    color: colors.primaryText,
   },
   format: {
     fontSize: 14,
-    fontWeight: '600',
-    opacity: 0.6,
-    color: colors.textLight,
+    color: colors.secondaryText,
   },
 });

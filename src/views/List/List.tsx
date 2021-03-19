@@ -1,5 +1,5 @@
 import React, {FC, useCallback, useLayoutEffect} from 'react';
-import {View, Button, ListRenderItemInfo, Text} from 'react-native';
+import {View, ListRenderItemInfo, Text} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {differenceInCalendarDays, format} from 'date-fns';
 import {SwipeListView} from 'react-native-swipe-list-view';
@@ -17,10 +17,7 @@ import ListActions from '../../components/ListActions';
 import Empty from '../../components/Empty';
 
 import styles from './List.styles';
-import {
-  TouchableHighlight,
-  TouchableOpacity,
-} from 'react-native-gesture-handler';
+import {TouchableHighlight} from 'react-native-gesture-handler';
 import colors from '../../constants/colors';
 
 type ListRouteProp = RouteProp<SinceListStackParamList, 'SinceList'>;
@@ -67,7 +64,7 @@ const List: FC<ViewProps> = ({navigation, route}) => {
           underlayColor={colors.listActionsBackground}
           style={styles.buttonContainer}
           onPress={() => navigation.navigate('CreateCounter', {})}>
-          <Icon name="plus" style={styles.button} size={24} />
+          <Icon name="plus" style={styles.button} size={28} />
         </TouchableHighlight>
       ),
     });
@@ -99,7 +96,7 @@ const List: FC<ViewProps> = ({navigation, route}) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>DAYS {isSince ? 'SINCE' : 'UNTIL'}</Text>
+      <Text style={styles.title}>Days {isSince ? 'Since' : 'Until'}</Text>
       <SwipeListView
         data={listCounters}
         renderItem={listItem}

@@ -1,16 +1,13 @@
-const palette = {
-  white: '#ffffff',
-  red: '#FA3830',
-};
-
 export default {
-  white: palette.white,
+  tabNavigatorBackground: '#f7f7f7',
+  tabNavigatorBorder: '#e2e2e2',
+  cardBackground: '#f2f2f2',
+  primaryText: '#000000',
+  secondaryText: '#878787',
+  viewBackground: '#ffffff',
+  accent: '#ff9403',
+
   inputBottomBorder: '#bababa',
   listActionsBackground: '#ddd',
-  primary: '#051849',
-  accent: '#0a84ff',
-  deleteActionBackground: palette.red,
-
-  primaryLight: '#f7cf7a',
-  textLight: '#2a253c',
+  deleteActionBackground: '#fa3830',
 };

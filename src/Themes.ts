@@ -5,10 +5,11 @@ export const LightTheme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    primary: colors.textLight, // tabs text
-    background: colors.white, // view bg
-    text: colors.textLight, // headerText
-    card: colors.white, // header
+    primary: colors.accent, // tabs text
+    background: colors.viewBackground, // view bg
+    text: colors.primaryText, // headerText
+    card: colors.viewBackground, // header
+    border: colors.viewBackground,
   },
 };
 
@@ -16,10 +17,5 @@ export const DarkTheme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    primary: colors.primary,
-    background: colors.primary,
-    text: colors.white,
-    card: colors.primary,
-    border: '#2e4793',
   },
 };

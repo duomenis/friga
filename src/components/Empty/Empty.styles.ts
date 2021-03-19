@@ -3,7 +3,7 @@ import colors from '../../constants/colors';
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: colors.white,
+    backgroundColor: colors.viewBackground,
     flex: 1,
     padding: 32,
     alignItems: 'center',

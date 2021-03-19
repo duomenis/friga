@@ -7,21 +7,17 @@ export default StyleSheet.create({
     flex: 1,
   },
   buttonContainer: {
-    backgroundColor: colors.primaryLight,
     paddingLeft: 12,
     paddingRight: 20,
     paddingVertical: 6,
-    borderTopLeftRadius: 18,
-    borderBottomLeftRadius: 18,
   },
   button: {
-    color: colors.white,
+    color: colors.accent,
   },
   title: {
-    fontSize: 14,
+    fontSize: 24,
     fontWeight: '700',
     padding: 16,
-    opacity: 0.7,
-    color: colors.textLight,
+    color: colors.primaryText,
   },
 });

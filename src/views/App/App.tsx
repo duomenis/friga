@@ -9,15 +9,15 @@ import {
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Feather';
 
+import colors from '../../constants/colors';
+import DataProvider from '../../DataContext';
+import {LightTheme, DarkTheme} from '../../Themes';
 import {
   RootTabParamList,
   RootStackParamList,
   SinceListStackParamList,
   UntilListStackParamList,
 } from '../../types';
-
-import DataProvider from '../../DataContext';
-import {LightTheme, DarkTheme} from '../../Themes';
 
 import List from '../List';
 import CreateCounter from '../CreateCounter';
@@ -61,7 +61,10 @@ const App = () => {
         labelStyle: {
           fontSize: 12,
         },
-        style: {backgroundColor: 'white'},
+        style: {
+          backgroundColor: colors.tabNavigatorBackground,
+          borderTopColor: colors.tabNavigatorBorder,
+        },
       }}>
       <RootTab.Screen
         name="UntilListStack"
