@@ -59,7 +59,7 @@ const List: FC<ViewProps> = ({navigation, route}) => {
       headerRight: () => (
         <TouchableHighlight
           activeOpacity={0.6}
-          underlayColor={colors[scheme].viewBackground}
+          underlayColor={colors[scheme].modalHeaderBackground}
           style={styles().buttonContainer}
           onPress={() => navigation.navigate('CreateCounter')}>
           <Icon name="plus" style={styles(scheme).button} size={28} />

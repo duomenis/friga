@@ -1,5 +1,11 @@
 import React, {FC} from 'react';
-import {View, Text, useColorScheme} from 'react-native';
+import {
+  View,
+  Text,
+  useColorScheme,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {format} from 'date-fns';
 import nodeEmoji from 'node-emoji';
@@ -42,15 +48,17 @@ const CounterForm: FC<ViewProps> = ({
         </Text>
       </TouchableOpacity>
       <Input placeholder="Name" value={name} onChangeText={onNameChange} />
-      <DatePicker
-        name="datePicker"
-        value={date}
-        placeholder="Date"
-        onPress={() => null}
-        onChangeText={(_, selectedDate) =>
-          selectedDate && onDateChange(format(selectedDate, 'yyyy/MM/dd'))
-        }
-      />
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+        <DatePicker
+          name="datePicker"
+          value={date}
+          placeholder="Date"
+          onPress={() => null}
+          onChangeText={(_, selectedDate) =>
+            selectedDate && onDateChange(format(selectedDate, 'yyyy/MM/dd'))
+          }
+        />
+      </TouchableWithoutFeedback>
     </View>
   );
 };

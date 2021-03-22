@@ -1,5 +1,5 @@
 import React, {FC, useLayoutEffect, useState} from 'react';
-import {Button, useColorScheme} from 'react-native';
+import {Button, ScrollView, useColorScheme} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import 'react-native-get-random-values';
 import {nanoid} from 'nanoid';
@@ -72,15 +72,17 @@ const CreateCounter: FC<ViewProps> = ({navigation}) => {
   };
 
   return (
-    <CounterForm
-      name={name}
-      date={date}
-      icon={icon}
-      onIconChange={handleIconChange}
-      onNameChange={handleNameChange}
-      onDateChange={handleDateChange}
-      navigation={navigation}
-    />
+    <ScrollView>
+      <CounterForm
+        name={name}
+        date={date}
+        icon={icon}
+        onIconChange={handleIconChange}
+        onNameChange={handleNameChange}
+        onDateChange={handleDateChange}
+        navigation={navigation}
+      />
+    </ScrollView>
   );
 };
 
