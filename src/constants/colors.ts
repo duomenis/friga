@@ -7,6 +7,7 @@ export default {
     secondaryText: '#878787',
     viewBackground: '#ffffff',
     accent: '#ff9403',
+    modalHeaderBackground: '#ffffff',
   },
   dark: {
     tabNavigatorBackground: '#121212',
@@ -16,6 +17,7 @@ export default {
     secondaryText: '#878787',
     viewBackground: '#000000',
     accent: '#ff9403',
+    modalHeaderBackground: '#121212',
   },
 
   inputBottomBorder: '#bababa',

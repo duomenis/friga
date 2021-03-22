@@ -61,7 +61,7 @@ const List: FC<ViewProps> = ({navigation, route}) => {
           activeOpacity={0.6}
           underlayColor={colors[scheme].viewBackground}
           style={styles().buttonContainer}
-          onPress={() => navigation.navigate('CreateCounter', {})}>
+          onPress={() => navigation.navigate('CreateCounter')}>
           <Icon name="plus" style={styles(scheme).button} size={28} />
         </TouchableHighlight>
       ),
@@ -81,7 +81,7 @@ const List: FC<ViewProps> = ({navigation, route}) => {
   if (!listCounters || listCounters.length === 0) {
     return (
       <Empty
-        action={() => navigation.navigate('CreateCounter', {})}
+        action={() => navigation.navigate('CreateCounter')}
         type={isSince ? 'Since' : 'Until'}
       />
     );

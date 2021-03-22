@@ -131,7 +131,12 @@ const App = () => {
           <RootStack.Screen
             name="EditCounter"
             component={EditCounter}
-            options={{title: 'Edit Counter'}}
+            options={{
+              title: 'Edit Counter',
+              headerStyle: {
+                backgroundColor: colors[scheme].modalHeaderBackground,
+              },
+            }}
           />
           <RootStack.Screen
             name="EmojiPicker"
