@@ -17,7 +17,7 @@ export const styles = (theme: scheme = 'light') =>
       width: 96,
       height: 96,
       margin: 24,
-      borderWidth: 2,
+      borderWidth: 1,
       borderRadius: 12,
       borderColor: colors[theme].accent,
       alignItems: 'center',

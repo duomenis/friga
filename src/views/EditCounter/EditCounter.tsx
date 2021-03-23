@@ -1,5 +1,5 @@
 import React, {FC, useLayoutEffect, useState} from 'react';
-import {Button, ScrollView, useColorScheme} from 'react-native';
+import {Button, ScrollView, StatusBar, useColorScheme} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import nodeEmoji from 'node-emoji';
 import {differenceInCalendarDays, format} from 'date-fns';
@@ -89,6 +89,10 @@ const EditCounter: FC<ViewProps> = ({navigation, route}) => {
 
   return (
     <ScrollView>
+      {
+        // https://github.com/react-navigation/react-navigation/commit/a204edd012060f0816eddee7a093183aa379d049
+      }
+      <StatusBar barStyle={'light-content'} />
       <CounterForm
         name={name}
         onNameChange={handleNameChange}

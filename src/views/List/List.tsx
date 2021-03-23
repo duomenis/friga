@@ -1,8 +1,8 @@
 import React, {FC, useCallback, useLayoutEffect} from 'react';
-import {View, Text, useColorScheme} from 'react-native';
+import {View, Text, useColorScheme, StatusBar} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {differenceInCalendarDays, format} from 'date-fns';
-import {RouteProp} from '@react-navigation/native';
+import {RouteProp, useFocusEffect} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Feather';
 
 import {
@@ -53,6 +53,15 @@ const List: FC<ViewProps> = ({navigation, route}) => {
       ?.filter((counter) => counter.differenceInCalendarDays < 0)
       .sort((a, b) => b.differenceInCalendarDays - a.differenceInCalendarDays);
   }
+
+  // https://github.com/react-navigation/react-navigation/commit/a204edd012060f0816eddee7a093183aa379d049
+  useFocusEffect(
+    useCallback(() => {
+      StatusBar.setBarStyle(
+        scheme === 'dark' ? 'light-content' : 'dark-content',
+      );
+    }, [scheme]),
+  );
 
   useLayoutEffect(() => {
     navigation.setOptions({

@@ -23,7 +23,7 @@ const Input: FC<Props> = ({
     <TextInput
       placeholder={placeholder}
       onChangeText={onChangeText}
-      style={[styles(scheme).input, borderless ? {} : styles().border]}
+      style={[styles(scheme).input, borderless ? {} : styles(scheme).border]}
       value={value}
       editable={editable}
       keyboardType={keyboardType}

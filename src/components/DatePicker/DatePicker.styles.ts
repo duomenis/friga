@@ -8,7 +8,7 @@ export const styles = (theme: scheme = 'light') =>
     container: {},
     control: {
       borderBottomWidth: 0.5,
-      borderBottomColor: colors.inputBottomBorder,
+      borderBottomColor: colors[theme].inputBottomBorder,
       marginLeft: 16,
       marginBottom: 12,
       paddingVertical: 12,

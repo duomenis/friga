@@ -13,6 +13,6 @@ export const styles = (theme: scheme = 'light') =>
     },
     border: {
       borderBottomWidth: 0.5,
-      borderBottomColor: colors.inputBottomBorder,
+      borderBottomColor: colors[theme].inputBottomBorder,
     },
   });

@@ -1,5 +1,5 @@
 import React, {FC, useLayoutEffect, useState} from 'react';
-import {Button, ScrollView, useColorScheme} from 'react-native';
+import {Button, ScrollView, StatusBar, useColorScheme} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import 'react-native-get-random-values';
 import {nanoid} from 'nanoid';
@@ -73,6 +73,10 @@ const CreateCounter: FC<ViewProps> = ({navigation}) => {
 
   return (
     <ScrollView>
+      {
+        // https://github.com/react-navigation/react-navigation/commit/a204edd012060f0816eddee7a093183aa379d049
+      }
+      <StatusBar barStyle={'light-content'} />
       <CounterForm
         name={name}
         date={date}

@@ -8,6 +8,7 @@ export default {
     viewBackground: '#ffffff',
     accent: '#ff9403',
     modalHeaderBackground: '#ffffff',
+    inputBottomBorder: '#bababa',
   },
   dark: {
     tabNavigatorBackground: '#121212',
@@ -18,9 +19,7 @@ export default {
     viewBackground: '#000000',
     accent: '#ff9403',
     modalHeaderBackground: '#121212',
+    inputBottomBorder: '#878787',
   },
-
-  inputBottomBorder: '#bababa',
-  listActionsBackground: '#ddd',
   deleteActionBackground: '#fa3830',
 };
