@@ -4,14 +4,11 @@ import {TextInput, TextInputProps, useColorScheme} from 'react-native';
 
 import {styles} from './Input.styles';
 
-type Props = {
-  borderless?: boolean;
-} & TextInputProps;
+type Props = TextInputProps;
 
 const Input: FC<Props> = ({
   onChangeText,
   placeholder,
-  borderless,
   value,
   editable,
   keyboardType,
@@ -23,7 +20,7 @@ const Input: FC<Props> = ({
     <TextInput
       placeholder={placeholder}
       onChangeText={onChangeText}
-      style={[styles(scheme).input, borderless ? {} : styles(scheme).border]}
+      style={styles(scheme).input}
       value={value}
       editable={editable}
       keyboardType={keyboardType}

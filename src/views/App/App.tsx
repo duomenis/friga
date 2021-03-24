@@ -126,16 +126,18 @@ const App = () => {
           <RootStack.Screen
             name="CreateEvent"
             component={CreateEvent}
-            options={{title: 'New Event'}}
+            options={{
+              title: 'New Event',
+              headerStyle: {
+                backgroundColor: colors[scheme].modalHeaderBackground,
+              },
+            }}
           />
           <RootStack.Screen
             name="EditEvent"
             component={EditEvent}
             options={{
               title: 'Edit Event',
-              headerStyle: {
-                backgroundColor: colors[scheme].modalHeaderBackground,
-              },
             }}
           />
           <RootStack.Screen

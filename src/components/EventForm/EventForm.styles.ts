@@ -13,19 +13,25 @@ export const styles = (theme: scheme = 'light') =>
       fontSize: 12,
       paddingLeft: 16,
     },
-    icon: {
-      width: 96,
-      height: 96,
-      margin: 24,
-      borderWidth: 1,
-      borderRadius: 12,
-      borderColor: colors[theme].accent,
-      alignItems: 'center',
-      justifyContent: 'center',
-      alignSelf: 'center',
+    iconContainer: {
+      display: 'flex',
+      flexDirection: 'row',
+      paddingVertical: 12,
+      paddingRight: 16,
+      justifyContent: 'space-between',
+    },
+    iconPickerText: {
+      fontSize: 16,
+      color: colors[theme].primaryText,
     },
     emoji: {
-      fontSize: 64,
+      fontSize: 18,
       backgroundColor: 'transparent',
+    },
+    formSection: {
+      backgroundColor: colors[theme].formSectionBackground,
+      paddingLeft: 16,
+      margin: 16,
+      borderRadius: 12,
     },
   });

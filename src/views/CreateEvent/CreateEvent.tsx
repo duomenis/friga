@@ -10,6 +10,8 @@ import {Icon, RootStackParamList} from '../../types';
 import colors from '../../constants/colors';
 import EventForm from '../../components/EventForm';
 
+import {styles} from './CreateEvent.styles';
+
 type ViewProps = {
   navigation: StackNavigationProp<RootStackParamList>;
 };
@@ -72,7 +74,7 @@ const CreateEvent: FC<ViewProps> = ({navigation}) => {
   };
 
   return (
-    <ScrollView>
+    <ScrollView style={styles(scheme).container}>
       {
         // https://github.com/react-navigation/react-navigation/commit/a204edd012060f0816eddee7a093183aa379d049
       }

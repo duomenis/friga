@@ -9,6 +9,8 @@ export default {
     accent: '#ff9403',
     modalHeaderBackground: '#ffffff',
     inputBottomBorder: '#bababa',
+    formSectionBackground: '#ffffff',
+    modalBackground: 'rgb(242,241,245)',
   },
   dark: {
     tabNavigatorBackground: '#121212',
@@ -18,8 +20,10 @@ export default {
     secondaryText: '#878787',
     viewBackground: '#000000',
     accent: '#ff9403',
-    modalHeaderBackground: '#121212',
     inputBottomBorder: '#878787',
+    modalHeaderBackground: 'rgb(40,39,41)',
+    formSectionBackground: 'rgb(44,43,45)',
+    modalBackground: 'rgb(28,27,29)',
   },
   deleteActionBackground: '#fa3830',
 };

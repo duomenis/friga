@@ -8,7 +8,7 @@ import EmojiSelector from 'react-native-emoji-selector';
 import colors from '../../constants/colors';
 import {RootStackParamList} from '../../types';
 
-import styles from './EmojiPicker.styles';
+import {styles} from './EmojiPicker.styles';
 
 type EmojiPickerRouteProp = RouteProp<RootStackParamList, 'EmojiPicker'>;
 
@@ -35,8 +35,12 @@ const EmojiPicker: FC<ViewProps> = ({navigation, route}) => {
     route.params.onSelect({value: emoji});
   };
   return (
-    <SafeAreaView style={styles.container}>
-      <EmojiSelector onEmojiSelected={handleEmojiSelect} showHistory={true} />
+    <SafeAreaView style={styles(scheme).container}>
+      <EmojiSelector
+        onEmojiSelected={handleEmojiSelect}
+        showHistory={true}
+        columns={8}
+      />
     </SafeAreaView>
   );
 };

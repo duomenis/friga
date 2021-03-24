@@ -6,9 +6,6 @@ import {scheme} from '../../types';
 export const styles = (theme: scheme = 'light') =>
   StyleSheet.create({
     container: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
       backgroundColor: colors[theme].modalBackground,
     },
   });

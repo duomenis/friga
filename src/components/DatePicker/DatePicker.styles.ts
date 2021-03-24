@@ -9,7 +9,6 @@ export const styles = (theme: scheme = 'light') =>
     control: {
       borderBottomWidth: 0.5,
       borderBottomColor: colors[theme].inputBottomBorder,
-      marginLeft: 16,
       marginBottom: 12,
       paddingVertical: 12,
       paddingRight: 16,
