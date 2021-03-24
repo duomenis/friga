@@ -6,7 +6,6 @@ import {scheme} from '../../types';
 export const styles = (theme: scheme = 'light') =>
   StyleSheet.create({
     container: {
-      backgroundColor: colors[theme].modalBackground,
       borderRadius: 8,
       marginRight: 8,
       padding: 8,

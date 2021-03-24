@@ -30,4 +30,7 @@ export const styles = (theme: scheme = 'light') =>
       fontSize: 14,
       color: colors[theme].secondaryText,
     },
+    icon: {
+      backgroundColor: colors[theme].viewBackground,
+    },
   });

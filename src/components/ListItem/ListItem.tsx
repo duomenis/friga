@@ -23,7 +23,7 @@ const ListItem: FC<Props> = ({item, onPress}) => {
     <TouchableOpacity
       style={styles(scheme).container}
       onPress={() => onPress(item)}>
-      <Emoji name={icon} />
+      <Emoji name={icon} style={styles(scheme).icon} />
       <View style={styles().left}>
         <Text style={styles(scheme).name}>{name}</Text>
         <Text style={styles(scheme).format}>

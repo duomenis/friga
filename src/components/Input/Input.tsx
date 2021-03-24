@@ -26,6 +26,7 @@ const Input: FC<Props> = ({
       keyboardType={keyboardType}
       secureTextEntry={secureTextEntry}
       autoCapitalize={autoCapitalize}
+      autoFocus
     />
   );
 };

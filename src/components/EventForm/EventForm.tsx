@@ -62,17 +62,15 @@ const EventForm: FC<ViewProps> = ({
         </TouchableOpacity>
       </View>
       <View style={styles(scheme).formSection}>
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-          <DatePicker
-            name="datePicker"
-            value={date}
-            placeholder="Date"
-            onPress={() => null}
-            onChangeText={(_, selectedDate) =>
-              selectedDate && onDateChange(format(selectedDate, 'yyyy/MM/dd'))
-            }
-          />
-        </TouchableWithoutFeedback>
+        <DatePicker
+          name="datePicker"
+          value={date}
+          placeholder="Date"
+          onPress={() => null}
+          onChangeText={(_, selectedDate) =>
+            selectedDate && onDateChange(format(selectedDate, 'yyyy/MM/dd'))
+          }
+        />
       </View>
       {isEdit && onDelete && (
         <View style={styles(scheme).formSection}>
