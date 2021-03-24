@@ -30,6 +30,7 @@ type ViewProps = {
   onIconChange: ({value}: {value: Icon}) => void;
   isEdit?: boolean;
   onDelete?: (ev: NativeSyntheticEvent<NativeTouchEvent>) => void;
+  autoFocus?: boolean;
 };
 
 const EventForm: FC<ViewProps> = ({
@@ -42,12 +43,18 @@ const EventForm: FC<ViewProps> = ({
   onIconChange,
   isEdit,
   onDelete,
+  autoFocus,
 }) => {
   const scheme = useColorScheme() || 'light';
   return (
     <View style={styles().container}>
       <View style={styles(scheme).formSection}>
-        <Input placeholder="Name" value={name} onChangeText={onNameChange} />
+        <Input
+          placeholder="Name"
+          value={name}
+          onChangeText={onNameChange}
+          autoFocus={autoFocus}
+        />
       </View>
       <View style={styles(scheme).formSection}>
         <TouchableOpacity
@@ -73,7 +80,8 @@ const EventForm: FC<ViewProps> = ({
         />
       </View>
       {isEdit && onDelete && (
-        <View style={styles(scheme).formSection}>
+        <View
+          style={[styles(scheme).formSection, styles().deleteButtonSection]}>
           <Button
             color={colors.deleteActionBackground}
             onPress={onDelete}

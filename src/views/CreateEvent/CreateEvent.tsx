@@ -87,6 +87,7 @@ const CreateEvent: FC<ViewProps> = ({navigation}) => {
         onNameChange={handleNameChange}
         onDateChange={handleDateChange}
         navigation={navigation}
+        autoFocus
       />
     </ScrollView>
   );

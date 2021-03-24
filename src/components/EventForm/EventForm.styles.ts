@@ -34,4 +34,7 @@ export const styles = (theme: scheme = 'light') =>
       margin: 16,
       borderRadius: 12,
     },
+    deleteButtonSection: {
+      paddingVertical: 4,
+    },
   });

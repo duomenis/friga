@@ -14,6 +14,7 @@ const Input: FC<Props> = ({
   keyboardType,
   secureTextEntry,
   autoCapitalize,
+  autoFocus,
 }) => {
   const scheme = useColorScheme() || 'light';
   return (
@@ -26,7 +27,7 @@ const Input: FC<Props> = ({
       keyboardType={keyboardType}
       secureTextEntry={secureTextEntry}
       autoCapitalize={autoCapitalize}
-      autoFocus
+      autoFocus={autoFocus}
     />
   );
 };
