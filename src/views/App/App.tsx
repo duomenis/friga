@@ -37,7 +37,7 @@ const App = () => {
         name="UntilList"
         component={List}
         options={{
-          title: 'COUNTLY',
+          title: 'TANTUM',
         }}
       />
     </UntilListStack.Navigator>
@@ -50,7 +50,7 @@ const App = () => {
         component={List}
         initialParams={{since: true}}
         options={{
-          title: 'COUNTLY',
+          title: 'TANTUM',
         }}
       />
     </SinceListStack.Navigator>
@@ -120,7 +120,7 @@ const App = () => {
             component={RootTabScreens}
             options={{
               headerShown: false,
-              title: 'COUNTLY',
+              title: 'TANTUM',
             }}
           />
           <RootStack.Screen
