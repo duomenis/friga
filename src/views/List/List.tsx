@@ -1,5 +1,12 @@
 import React, {FC, useCallback, useLayoutEffect} from 'react';
-import {View, Text, useColorScheme, StatusBar} from 'react-native';
+import {
+  View,
+  Text,
+  useColorScheme,
+  StatusBar,
+  FlatList,
+  TouchableHighlight,
+} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {differenceInCalendarDays, format} from 'date-fns';
 import {RouteProp, useFocusEffect} from '@react-navigation/native';
@@ -15,7 +22,6 @@ import {useData} from '../../DataContext';
 import Empty from '../../components/Empty';
 
 import {styles} from './List.styles';
-import {FlatList, TouchableHighlight} from 'react-native-gesture-handler';
 import colors from '../../constants/colors';
 
 type ListRouteProp = RouteProp<SinceListStackParamList, 'SinceList'>;
@@ -28,29 +34,29 @@ type ViewProps = {
 const List: FC<ViewProps> = ({navigation, route}) => {
   const scheme = useColorScheme() || 'light';
   const {
-    state: {counters},
+    state: {events},
   } = useData();
 
   const isSince = route.params?.since;
 
-  let listCounters: ListItemType[] | undefined = counters?.map((counter) => {
+  let listEvents: ListItemType[] | undefined = events?.map((event) => {
     const today = new Date().setHours(0, 0, 0, 0);
-    const counterDate = new Date(counter.date).setHours(0, 0, 0, 0);
-    const diff = differenceInCalendarDays(today, counterDate);
+    const eventDate = new Date(event.date).setHours(0, 0, 0, 0);
+    const diff = differenceInCalendarDays(today, eventDate);
     return {
-      ...counter,
-      date: format(new Date(counter.date), 'LLLL d, yyyy'),
+      ...event,
+      date: format(new Date(event.date), 'LLLL d, yyyy'),
       differenceInCalendarDays: diff,
     };
   });
 
   if (isSince) {
-    listCounters = listCounters
-      ?.filter((counter) => counter.differenceInCalendarDays >= 0)
+    listEvents = listEvents
+      ?.filter((event) => event.differenceInCalendarDays >= 0)
       .sort((a, b) => a.differenceInCalendarDays - b.differenceInCalendarDays);
   } else {
-    listCounters = listCounters
-      ?.filter((counter) => counter.differenceInCalendarDays < 0)
+    listEvents = listEvents
+      ?.filter((event) => event.differenceInCalendarDays < 0)
       .sort((a, b) => b.differenceInCalendarDays - a.differenceInCalendarDays);
   }
 
@@ -70,7 +76,7 @@ const List: FC<ViewProps> = ({navigation, route}) => {
           activeOpacity={0.6}
           underlayColor={colors[scheme].modalHeaderBackground}
           style={styles().buttonContainer}
-          onPress={() => navigation.navigate('CreateCounter')}>
+          onPress={() => navigation.navigate('CreateEvent')}>
           <Icon name="plus" style={styles(scheme).button} size={28} />
         </TouchableHighlight>
       ),
@@ -79,18 +85,18 @@ const List: FC<ViewProps> = ({navigation, route}) => {
 
   const listItem = useCallback(
     ({item}: {item: ListItemType}) => {
-      const handleItemPress = (counter: ListItemType) => {
-        navigation.navigate('EditCounter', {counter});
+      const handleItemPress = (event: ListItemType) => {
+        navigation.navigate('EditEvent', {event});
       };
       return <ListItem item={item} onPress={handleItemPress} />;
     },
     [navigation],
   );
 
-  if (!listCounters || listCounters.length === 0) {
+  if (!listEvents || listEvents.length === 0) {
     return (
       <Empty
-        action={() => navigation.navigate('CreateCounter')}
+        action={() => navigation.navigate('CreateEvent')}
         type={isSince ? 'Since' : 'Until'}
       />
     );
@@ -101,7 +107,7 @@ const List: FC<ViewProps> = ({navigation, route}) => {
       <Text style={styles(scheme).title}>
         Days {isSince ? 'Since' : 'Until'}
       </Text>
-      <FlatList data={listCounters} renderItem={listItem} />
+      <FlatList data={listEvents} renderItem={listItem} />
     </View>
   );
 };

@@ -8,15 +8,15 @@ import {differenceInCalendarDays, format} from 'date-fns';
 import {useData} from '../../DataContext';
 import {Icon, RootStackParamList} from '../../types';
 import colors from '../../constants/colors';
-import CounterForm from '../../components/CounterForm';
+import EventForm from '../../components/EventForm';
 
 type ViewProps = {
   navigation: StackNavigationProp<RootStackParamList>;
 };
 
-const CreateCounter: FC<ViewProps> = ({navigation}) => {
+const CreateEvent: FC<ViewProps> = ({navigation}) => {
   const scheme = useColorScheme() || 'light';
-  const {addCounter} = useData();
+  const {addEvent} = useData();
   const today = new Date().setHours(0, 0, 0, 0);
   const [name, setName] = useState<string>('');
   const [date, setDate] = useState<string>(format(new Date(), 'yyyy/MM/dd'));
@@ -24,9 +24,9 @@ const CreateCounter: FC<ViewProps> = ({navigation}) => {
 
   useLayoutEffect(() => {
     const handleAddButtonClick = () => {
-      addCounter({key: nanoid(), icon, name, date});
-      const counterDate = new Date(date).setHours(0, 0, 0, 0);
-      const diff = differenceInCalendarDays(today, counterDate);
+      addEvent({key: nanoid(), icon, name, date});
+      const eventDate = new Date(date).setHours(0, 0, 0, 0);
+      const diff = differenceInCalendarDays(today, eventDate);
       if (diff >= 0) {
         navigation.navigate('RootTab', {
           screen: 'SinceListStack',
@@ -57,7 +57,7 @@ const CreateCounter: FC<ViewProps> = ({navigation}) => {
         />
       ),
     });
-  }, [navigation, name, date, addCounter, today, icon, scheme]);
+  }, [navigation, name, date, addEvent, today, icon, scheme]);
 
   const handleNameChange = (value: string) => {
     setName(value);
@@ -77,7 +77,7 @@ const CreateCounter: FC<ViewProps> = ({navigation}) => {
         // https://github.com/react-navigation/react-navigation/commit/a204edd012060f0816eddee7a093183aa379d049
       }
       <StatusBar barStyle={'light-content'} />
-      <CounterForm
+      <EventForm
         name={name}
         date={date}
         icon={icon}
@@ -90,4 +90,4 @@ const CreateCounter: FC<ViewProps> = ({navigation}) => {
   );
 };
 
-export default CreateCounter;
+export default CreateEvent;

@@ -18,15 +18,15 @@ export type RootTabParamList = {
 
 export type RootStackParamList = {
   RootTab: NavigatorScreenParams<RootTabParamList>;
-  CreateCounter: undefined;
-  EditCounter: {counter: Counter};
+  CreateEvent: undefined;
+  EditEvent: {event: Event};
   EmojiPicker: {onSelect: ({value}: {value: Icon}) => void};
 };
 /**End Navigation types */
 
 export type Icon = keyof typeof nodeEmoji.emoji;
 
-export type Counter = {
+export type Event = {
   key: string;
   icon: Icon;
   name: string;
@@ -36,6 +36,6 @@ export type Counter = {
 export type ListItemType = {
   key: string;
   differenceInCalendarDays: number;
-} & Counter;
+} & Event;
 
 export type scheme = 'light' | 'dark';

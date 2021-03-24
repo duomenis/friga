@@ -19,10 +19,10 @@ const Empty: FC<Props> = ({action, type}) => {
         style={styles().image}
         source={scheme === 'light' ? Images.Empty : Images.EmptyDark}
       />
-      <Text style={styles(scheme).text}>No {type} Counters, yet.</Text>
+      <Text style={styles(scheme).text}>No {type} Events, yet.</Text>
       <Text style={styles(scheme).info}>Start adding some.</Text>
       <Button
-        title="Add Counter"
+        title="Add Event"
         onPress={action}
         color={colors[scheme].accent}
       />

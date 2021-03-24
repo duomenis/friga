@@ -20,8 +20,8 @@ import {
 } from '../../types';
 
 import List from '../List';
-import CreateCounter from '../CreateCounter';
-import EditCounter from '../EditCounter';
+import CreateEvent from '../CreateEvent';
+import EditEvent from '../EditEvent';
 import EmojiPicker from '../EmojiPicker';
 
 const App = () => {
@@ -73,7 +73,7 @@ const App = () => {
         options={{
           title: 'Days Until',
           tabBarIcon: ({color, size}) => (
-            <Icon name="fast-forward" color={color} size={size} />
+            <Icon name="arrow-right-circle" color={color} size={size} />
           ),
         }}
       />
@@ -83,7 +83,7 @@ const App = () => {
         options={{
           title: 'Days Since',
           tabBarIcon: ({color, size}) => (
-            <Icon name="rewind" color={color} size={size} />
+            <Icon name="arrow-left-circle" color={color} size={size} />
           ),
         }}
       />
@@ -101,7 +101,7 @@ const App = () => {
           }: {
             route: RouteProp<
               RootStackParamList,
-              'RootTab' | 'CreateCounter' | 'EmojiPicker' | 'EditCounter'
+              'RootTab' | 'CreateEvent' | 'EmojiPicker' | 'EditEvent'
             >;
             navigation: StackNavigationProp<RootStackParamList>;
           }) => ({
@@ -124,15 +124,15 @@ const App = () => {
             }}
           />
           <RootStack.Screen
-            name="CreateCounter"
-            component={CreateCounter}
-            options={{title: 'New Counter'}}
+            name="CreateEvent"
+            component={CreateEvent}
+            options={{title: 'New Event'}}
           />
           <RootStack.Screen
-            name="EditCounter"
-            component={EditCounter}
+            name="EditEvent"
+            component={EditEvent}
             options={{
-              title: 'Edit Counter',
+              title: 'Edit Event',
               headerStyle: {
                 backgroundColor: colors[scheme].modalHeaderBackground,
               },

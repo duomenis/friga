@@ -12,9 +12,9 @@ import nodeEmoji from 'node-emoji';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
 import {RootStackParamList, Icon} from '../../types';
-import DatePicker from '../../components/DatePicker';
-import Input from '../../components/Input';
-import {styles} from './CounterForm.styles';
+import DatePicker from '../DatePicker';
+import Input from '../Input';
+import {styles} from './EventForm.styles';
 
 type ViewProps = {
   navigation: StackNavigationProp<RootStackParamList>;

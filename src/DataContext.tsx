@@ -10,28 +10,28 @@ import React, {
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import {Counter} from './types';
+import {Event} from './types';
 
 type State = {
-  counters?: Counter[] | null;
+  events?: Event[] | null;
   isLoading: boolean;
 };
 
 type Action =
-  | {type: 'RESTORE_COUNTERS'; counters?: Counter[] | null}
-  | {type: 'UPDATE_COUNTERS'; counters: Counter[] | null};
+  | {type: 'RESTORE_EVENTS'; events?: Event[] | null}
+  | {type: 'UPDATE_EVENTS'; events: Event[] | null};
 
 type Context = {
-  addCounter: (counter: Counter) => void;
-  updateCounter: (counter: Counter) => void;
-  deleteCounter: (key: string) => void;
+  addEvent: (event: Event) => void;
+  updateEvent: (event: Event) => void;
+  deleteEvent: (key: string) => void;
   state: State;
 };
 
 export const DataContext = createContext<Context>({
-  addCounter: (_: Counter) => console.warn('no provider'),
-  updateCounter: (_: Counter) => console.warn('no provider'),
-  deleteCounter: (_: string) => console.warn('no provider'),
+  addEvent: (_: Event) => console.warn('no provider'),
+  updateEvent: (_: Event) => console.warn('no provider'),
+  deleteEvent: (_: string) => console.warn('no provider'),
   state: {isLoading: false},
 });
 
@@ -43,57 +43,55 @@ const DataProvider: FC<Props> = ({children}) => {
   const [state, dispatch] = useReducer(
     (prevState: State, action: Action): State => {
       switch (action.type) {
-        case 'RESTORE_COUNTERS':
+        case 'RESTORE_EVENTS':
           return {
             ...prevState,
-            counters: action.counters,
+            events: action.events,
             isLoading: false,
           };
-        case 'UPDATE_COUNTERS':
+        case 'UPDATE_EVENTS':
           return {
             ...prevState,
-            counters: action.counters,
+            events: action.events,
           };
       }
     },
     {
       isLoading: true,
-      counters: null,
+      events: null,
     },
   );
   const context = useMemo(
     () => ({
-      addCounter: (counter: Counter) => {
-        const counters = [...(state.counters || []), counter];
-        AsyncStorage.setItem('@county_counters', JSON.stringify(counters))
-          .then(() => dispatch({type: 'UPDATE_COUNTERS', counters}))
+      addEvent: (event: Event) => {
+        const events = [...(state.events || []), event];
+        AsyncStorage.setItem('@county_events', JSON.stringify(events))
+          .then(() => dispatch({type: 'UPDATE_EVENTS', events}))
           .catch(() => {
             console.error('AsyncStorage: ');
           });
       },
-      deleteCounter: (key: string) => {
-        const counters = [...(state.counters || [])];
-        const indexToDelete = counters.findIndex(
-          (counter) => counter.key === key,
-        );
+      deleteEvent: (key: string) => {
+        const events = [...(state.events || [])];
+        const indexToDelete = events.findIndex((event) => event.key === key);
         if (indexToDelete > -1) {
-          counters.splice(indexToDelete, 1);
-          AsyncStorage.setItem('@county_counters', JSON.stringify(counters))
-            .then(() => dispatch({type: 'UPDATE_COUNTERS', counters: counters}))
+          events.splice(indexToDelete, 1);
+          AsyncStorage.setItem('@county_events', JSON.stringify(events))
+            .then(() => dispatch({type: 'UPDATE_EVENTS', events: events}))
             .catch(() => {
               console.error('AsyncStorage: ');
             });
         }
       },
-      updateCounter: (counter: Counter) => {
-        const counters = [...(state.counters || [])];
-        const indexToUpdate = counters.findIndex(
-          (count) => count.key === counter.key,
+      updateEvent: (event: Event) => {
+        const events = [...(state.events || [])];
+        const indexToUpdate = events.findIndex(
+          (singleEvent) => singleEvent.key === event.key,
         );
         if (indexToUpdate > -1) {
-          counters[indexToUpdate] = counter;
-          AsyncStorage.setItem('@county_counters', JSON.stringify(counters))
-            .then(() => dispatch({type: 'UPDATE_COUNTERS', counters: counters}))
+          events[indexToUpdate] = event;
+          AsyncStorage.setItem('@county_events', JSON.stringify(events))
+            .then(() => dispatch({type: 'UPDATE_EVENTS', events: events}))
             .catch(() => {
               console.error('AsyncStorage: ');
             });
@@ -104,19 +102,19 @@ const DataProvider: FC<Props> = ({children}) => {
   );
 
   useEffect(() => {
-    const restoreCounters = async () => {
+    const restoreEvents = async () => {
       //await AsyncStorage.clear();
       try {
-        const counters = await AsyncStorage.getItem('@county_counters');
-        if (counters) {
-          dispatch({type: 'RESTORE_COUNTERS', counters: JSON.parse(counters)});
+        const events = await AsyncStorage.getItem('@county_events');
+        if (events) {
+          dispatch({type: 'RESTORE_EVENTS', events: JSON.parse(events)});
         }
       } catch {
         console.error('AsyncStorage: ');
       }
     };
 
-    restoreCounters();
+    restoreEvents();
   }, []);
   return (
     <DataContext.Provider value={{...context, state}}>
