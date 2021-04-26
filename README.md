@@ -5,18 +5,22 @@
 
 <br />
 <p align="center">
-  <a href="https://github.com/alexanderritik/Best-README-Template">
     <img src="https://user-images.githubusercontent.com/1719915/112682518-d1d8f680-8e35-11eb-8cc0-0f1c7c1d4d1d.png
 " alt="Logo" width="80" height="80">
-  </a>
+
   <p align="center">
     Tantum is an app where you can keep track of the important events in your life, either past or to come.
   </p>
 </p>
 
-<p align="row">
-<img src= "https://user-images.githubusercontent.com/1719915/112682601-f03ef200-8e35-11eb-9668-50b74b67c120.png" width="200" >
-<img src= "https://user-images.githubusercontent.com/1719915/112682617-f634d300-8e35-11eb-8b11-e0fdf7297977.png" width="200" ><img src= "https://user-images.githubusercontent.com/1719915/112682626-f8972d00-8e35-11eb-8e25-ca0ce4955ed9.png" width="200" ><img src= "https://user-images.githubusercontent.com/1719915/112682634-faf98700-8e35-11eb-98e9-7b911f65374c.png" width="200" >
+<a href="https://apps.apple.com/gt/app/tantum/id1560040086">
+<p align="center">
+<img src= "https://user-images.githubusercontent.com/1719915/116148417-7dc86880-a6a6-11eb-974f-fa482c451781.png" width="120">
+</p>
+</a>
+
+<p align="center">
+<img src= "https://user-images.githubusercontent.com/1719915/112682601-f03ef200-8e35-11eb-9668-50b74b67c120.png" width="200"><img src= "https://user-images.githubusercontent.com/1719915/112682617-f634d300-8e35-11eb-8b11-e0fdf7297977.png" width="200"><img src= "https://user-images.githubusercontent.com/1719915/112682626-f8972d00-8e35-11eb-8e25-ca0ce4955ed9.png" width="200"><img src= "https://user-images.githubusercontent.com/1719915/112682634-faf98700-8e35-11eb-98e9-7b911f65374c.png" width="200">
 </p>
 
 ## Features
