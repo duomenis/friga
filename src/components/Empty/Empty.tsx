@@ -1,9 +1,10 @@
 import React, {FC} from 'react';
 
 import {Button, Image, Text, View, useColorScheme} from 'react-native';
-import colors from '../../constants/colors';
 
+import colors from '../../constants/colors';
 import Images from '../../images';
+
 import {styles} from './Empty.styles';
 
 type Props = {

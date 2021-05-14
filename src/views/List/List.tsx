@@ -1,4 +1,8 @@
 import React, {FC, useCallback, useLayoutEffect} from 'react';
+
+import {RouteProp, useFocusEffect} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {differenceInCalendarDays, format} from 'date-fns';
 import {
   View,
   Text,
@@ -7,22 +11,19 @@ import {
   FlatList,
   TouchableHighlight,
 } from 'react-native';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {differenceInCalendarDays, format} from 'date-fns';
-import {RouteProp, useFocusEffect} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Feather';
 
+import Empty from '../../components/Empty';
+import ListItem from '../../components/ListItem';
+import colors from '../../constants/colors';
+import {useData} from '../../DataContext';
 import {
   ListItemType,
   RootStackParamList,
   SinceListStackParamList,
 } from '../../types';
-import ListItem from '../../components/ListItem';
-import {useData} from '../../DataContext';
-import Empty from '../../components/Empty';
 
 import {styles} from './List.styles';
-import colors from '../../constants/colors';
 
 type ListRouteProp = RouteProp<SinceListStackParamList, 'SinceList'>;
 

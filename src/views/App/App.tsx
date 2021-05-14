@@ -1,12 +1,13 @@
 import React from 'react';
+
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer, RouteProp} from '@react-navigation/native';
-import {useColorScheme} from 'react-native';
 import {
   createStackNavigator,
   StackNavigationProp,
   TransitionPresets,
 } from '@react-navigation/stack';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {useColorScheme} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
 import colors from '../../constants/colors';
@@ -18,11 +19,10 @@ import {
   SinceListStackParamList,
   UntilListStackParamList,
 } from '../../types';
-
-import List from '../List';
 import CreateEvent from '../CreateEvent';
 import EditEvent from '../EditEvent';
 import EmojiPicker from '../EmojiPicker';
+import List from '../List';
 
 const App = () => {
   const scheme = useColorScheme() || 'light';

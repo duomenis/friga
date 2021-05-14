@@ -1,6 +1,7 @@
 import React, {FC} from 'react';
-import {Text, View, useColorScheme, ViewProps} from 'react-native';
+
 import nodeEmoji from 'node-emoji';
+import {Text, View, useColorScheme, ViewProps} from 'react-native';
 
 import {styles} from './Emoji.styles';
 

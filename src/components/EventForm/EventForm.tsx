@@ -1,24 +1,24 @@
 import React, {FC} from 'react';
+
+import {StackNavigationProp} from '@react-navigation/stack';
+import {format} from 'date-fns';
+import nodeEmoji from 'node-emoji';
 import {
   View,
   Text,
   useColorScheme,
-  TouchableWithoutFeedback,
-  Keyboard,
   Button,
   NativeSyntheticEvent,
   NativeTouchEvent,
   TouchableOpacity,
 } from 'react-native';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {format} from 'date-fns';
-import nodeEmoji from 'node-emoji';
 
+import colors from '../../constants/colors';
 import {RootStackParamList, Icon} from '../../types';
 import DatePicker from '../DatePicker';
 import Input from '../Input';
+
 import {styles} from './EventForm.styles';
-import colors from '../../constants/colors';
 
 type ViewProps = {
   navigation: StackNavigationProp<RootStackParamList>;

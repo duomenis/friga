@@ -1,6 +1,7 @@
 import React, {FC} from 'react';
-import {Text, View, useColorScheme, TouchableOpacity} from 'react-native';
+
 import {formatDuration, intervalToDuration} from 'date-fns';
+import {Text, View, useColorScheme, TouchableOpacity} from 'react-native';
 
 import {ListItemType} from '../../types';
 import Emoji from '../Emoji';

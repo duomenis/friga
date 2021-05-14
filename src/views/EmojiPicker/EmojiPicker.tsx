@@ -1,9 +1,10 @@
 import React, {FC, useLayoutEffect} from 'react';
-import {SafeAreaView, Button, useColorScheme} from 'react-native';
-import {StackNavigationProp} from '@react-navigation/stack';
+
 import {RouteProp} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
 import nodeEmoji from 'node-emoji';
 import EmojiSelector from 'react-native-emoji-selector';
+import {SafeAreaView, Button, useColorScheme} from 'react-native';
 
 import colors from '../../constants/colors';
 import {RootStackParamList} from '../../types';

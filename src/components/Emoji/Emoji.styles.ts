@@ -1,17 +1,13 @@
 import {StyleSheet} from 'react-native';
 
-import colors from '../../constants/colors';
-import {scheme} from '../../types';
-
-export const styles = (theme: scheme = 'light') =>
-  StyleSheet.create({
-    container: {
-      borderRadius: 8,
-      marginRight: 8,
-      padding: 8,
-    },
-    icon: {
-      fontSize: 20,
-      textAlign: 'center',
-    },
-  });
+export const styles = StyleSheet.create({
+  container: {
+    borderRadius: 8,
+    marginRight: 8,
+    padding: 8,
+  },
+  icon: {
+    fontSize: 20,
+    textAlign: 'center',
+  },
+});

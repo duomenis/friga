@@ -1,14 +1,15 @@
 import React, {FC, useLayoutEffect, useState} from 'react';
-import {Button, ScrollView, StatusBar, useColorScheme} from 'react-native';
-import {StackNavigationProp} from '@react-navigation/stack';
-import 'react-native-get-random-values';
-import {nanoid} from 'nanoid';
-import {differenceInCalendarDays, format} from 'date-fns';
 
+import {StackNavigationProp} from '@react-navigation/stack';
+import {differenceInCalendarDays, format} from 'date-fns';
+import {nanoid} from 'nanoid';
+import {Button, ScrollView, StatusBar, useColorScheme} from 'react-native';
+import 'react-native-get-random-values';
+
+import EventForm from '../../components/EventForm';
+import colors from '../../constants/colors';
 import {useData} from '../../DataContext';
 import {Icon, RootStackParamList} from '../../types';
-import colors from '../../constants/colors';
-import EventForm from '../../components/EventForm';
 
 import {styles} from './CreateEvent.styles';
 

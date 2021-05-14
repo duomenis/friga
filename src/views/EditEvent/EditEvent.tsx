@@ -1,4 +1,9 @@
 import React, {FC, useLayoutEffect, useState} from 'react';
+
+import {RouteProp} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {differenceInCalendarDays, format} from 'date-fns';
+import nodeEmoji from 'node-emoji';
 import {
   Alert,
   Button,
@@ -6,15 +11,11 @@ import {
   StatusBar,
   useColorScheme,
 } from 'react-native';
-import {StackNavigationProp} from '@react-navigation/stack';
-import nodeEmoji from 'node-emoji';
-import {differenceInCalendarDays, format} from 'date-fns';
-import {RouteProp} from '@react-navigation/native';
 
+import EventForm from '../../components/EventForm';
+import colors from '../../constants/colors';
 import {useData} from '../../DataContext';
 import {Icon, RootStackParamList} from '../../types';
-import colors from '../../constants/colors';
-import EventForm from '../../components/EventForm';
 
 import {styles} from './EditEvent.styles';
 
